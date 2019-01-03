@@ -7,21 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		823547170D264971B7B8D045 /* Pods_TVU_Ticket_System___Students.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE8913B53901B936DE2F3D2C /* Pods_TVU_Ticket_System___Students.framework */; };
+		E227D07B21DDE61200171925 /* DataEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E227D07A21DDE61200171925 /* DataEntryViewController.swift */; };
+		E2568DFA21DCEAF40010AB64 /* UIView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568DF921DCEAF40010AB64 /* UIView-Extension.swift */; };
+		E2568DFC21DCECAE0010AB64 /* MainViewController + AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568DFB21DCECAE0010AB64 /* MainViewController + AutoLayout.swift */; };
+		E2568DFE21DCF4830010AB64 /* MainVC-TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568DFD21DCF4830010AB64 /* MainVC-TableView.swift */; };
+		E2568E0021DCF9B90010AB64 /* MainVC-ItemsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568DFF21DCF9B90010AB64 /* MainVC-ItemsCell.swift */; };
+		E2568E0221DCFA720010AB64 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568E0121DCFA720010AB64 /* CustomImageView.swift */; };
+		E2568E0421DCFCE80010AB64 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568E0321DCFCE80010AB64 /* CardView.swift */; };
+		E2568E0621DCFEFD0010AB64 /* MainVC-ItemsCell + AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568E0521DCFEFD0010AB64 /* MainVC-ItemsCell + AutoLayout.swift */; };
+		E2568E0821DD0C160010AB64 /* MainVC_Items.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2568E0721DD0C160010AB64 /* MainVC_Items.plist */; };
+		E2568E0A21DD0D360010AB64 /* MainVCItemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568E0921DD0D360010AB64 /* MainVCItemsModel.swift */; };
 		E2F41E8121DBF4F900658528 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F41E8021DBF4F900658528 /* AppDelegate.swift */; };
-		E2F41E8321DBF4F900658528 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F41E8221DBF4F900658528 /* ViewController.swift */; };
-		E2F41E8621DBF4F900658528 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2F41E8421DBF4F900658528 /* Main.storyboard */; };
+		E2F41E8321DBF4F900658528 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F41E8221DBF4F900658528 /* MainViewController.swift */; };
 		E2F41E8821DBF4FC00658528 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2F41E8721DBF4FC00658528 /* Assets.xcassets */; };
 		E2F41E8B21DBF4FC00658528 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2F41E8921DBF4FC00658528 /* LaunchScreen.storyboard */; };
+		E2F41E9321DBF5F800658528 /* BTraffic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2F41E9221DBF5F800658528 /* BTraffic.ttf */; };
+		E2F41E9521DBFE3800658528 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F41E9421DBFE3800658528 /* CustomTextField.swift */; };
+		E2F41E9721DC078A00658528 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F41E9621DC078A00658528 /* CustomTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0EC2196E5497598E85F29F5D /* Pods-TVU Ticket System | Students.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVU Ticket System | Students.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TVU Ticket System | Students/Pods-TVU Ticket System | Students.debug.xcconfig"; sourceTree = "<group>"; };
+		3F5138FEDE6502F3D5D60445 /* Pods-TVU Ticket System | Students.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVU Ticket System | Students.release.xcconfig"; path = "Pods/Target Support Files/Pods-TVU Ticket System | Students/Pods-TVU Ticket System | Students.release.xcconfig"; sourceTree = "<group>"; };
+		AE8913B53901B936DE2F3D2C /* Pods_TVU_Ticket_System___Students.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_TVU_Ticket_System___Students.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E227D07A21DDE61200171925 /* DataEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryViewController.swift; sourceTree = "<group>"; };
+		E2568DF921DCEAF40010AB64 /* UIView-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Extension.swift"; sourceTree = "<group>"; };
+		E2568DFB21DCECAE0010AB64 /* MainViewController + AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController + AutoLayout.swift"; sourceTree = "<group>"; };
+		E2568DFD21DCF4830010AB64 /* MainVC-TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainVC-TableView.swift"; sourceTree = "<group>"; };
+		E2568DFF21DCF9B90010AB64 /* MainVC-ItemsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainVC-ItemsCell.swift"; sourceTree = "<group>"; };
+		E2568E0121DCFA720010AB64 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		E2568E0321DCFCE80010AB64 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		E2568E0521DCFEFD0010AB64 /* MainVC-ItemsCell + AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainVC-ItemsCell + AutoLayout.swift"; sourceTree = "<group>"; };
+		E2568E0721DD0C160010AB64 /* MainVC_Items.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MainVC_Items.plist; sourceTree = "<group>"; };
+		E2568E0921DD0D360010AB64 /* MainVCItemsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCItemsModel.swift; sourceTree = "<group>"; };
 		E2F41E7D21DBF4F900658528 /* TVU Ticket System | Students.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TVU Ticket System | Students.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2F41E8021DBF4F900658528 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E2F41E8221DBF4F900658528 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E2F41E8521DBF4F900658528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E2F41E8221DBF4F900658528 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E2F41E8721DBF4FC00658528 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2F41E8A21DBF4FC00658528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2F41E8C21DBF4FC00658528 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2F41E9221DBF5F800658528 /* BTraffic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BTraffic.ttf; sourceTree = "<group>"; };
+		E2F41E9421DBFE3800658528 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		E2F41E9621DC078A00658528 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +57,86 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				823547170D264971B7B8D045 /* Pods_TVU_Ticket_System___Students.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		013B1E27FE36D57D3DC1FA22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AE8913B53901B936DE2F3D2C /* Pods_TVU_Ticket_System___Students.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CAAB4A245222C0890FACAF0E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0EC2196E5497598E85F29F5D /* Pods-TVU Ticket System | Students.debug.xcconfig */,
+				3F5138FEDE6502F3D5D60445 /* Pods-TVU Ticket System | Students.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E2568DF421DCE7270010AB64 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E2F41E8221DBF4F900658528 /* MainViewController.swift */,
+				E227D07A21DDE61200171925 /* DataEntryViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E2568DF521DCE73A0010AB64 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E2568E0321DCFCE80010AB64 /* CardView.swift */,
+				E2568E0121DCFA720010AB64 /* CustomImageView.swift */,
+				E2F41E9421DBFE3800658528 /* CustomTextField.swift */,
+				E2F41E9621DC078A00658528 /* CustomTextView.swift */,
+				E2568DFF21DCF9B90010AB64 /* MainVC-ItemsCell.swift */,
+				E2568DFD21DCF4830010AB64 /* MainVC-TableView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E2568DF621DCE74E0010AB64 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E2568E0921DD0D360010AB64 /* MainVCItemsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E2568DF721DCE78C0010AB64 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				E2F41E9221DBF5F800658528 /* BTraffic.ttf */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		E2568DF821DCEADE0010AB64 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E2568DF921DCEAF40010AB64 /* UIView-Extension.swift */,
+				E2568DFB21DCECAE0010AB64 /* MainViewController + AutoLayout.swift */,
+				E2568E0521DCFEFD0010AB64 /* MainVC-ItemsCell + AutoLayout.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		E2F41E7421DBF4F900658528 = {
 			isa = PBXGroup;
 			children = (
+				E2568E0721DD0C160010AB64 /* MainVC_Items.plist */,
 				E2F41E7F21DBF4F900658528 /* TVU Ticket System | Students */,
 				E2F41E7E21DBF4F900658528 /* Products */,
+				CAAB4A245222C0890FACAF0E /* Pods */,
+				013B1E27FE36D57D3DC1FA22 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,9 +151,12 @@
 		E2F41E7F21DBF4F900658528 /* TVU Ticket System | Students */ = {
 			isa = PBXGroup;
 			children = (
+				E2568DF821DCEADE0010AB64 /* Extension */,
+				E2568DF721DCE78C0010AB64 /* Assets */,
+				E2568DF621DCE74E0010AB64 /* Model */,
+				E2568DF521DCE73A0010AB64 /* View */,
+				E2568DF421DCE7270010AB64 /* Controller */,
 				E2F41E8021DBF4F900658528 /* AppDelegate.swift */,
-				E2F41E8221DBF4F900658528 /* ViewController.swift */,
-				E2F41E8421DBF4F900658528 /* Main.storyboard */,
 				E2F41E8721DBF4FC00658528 /* Assets.xcassets */,
 				E2F41E8921DBF4FC00658528 /* LaunchScreen.storyboard */,
 				E2F41E8C21DBF4FC00658528 /* Info.plist */,
@@ -71,9 +171,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E2F41E8F21DBF4FC00658528 /* Build configuration list for PBXNativeTarget "TVU Ticket System | Students" */;
 			buildPhases = (
+				096586BCF62DE16DFF7D4139 /* [CP] Check Pods Manifest.lock */,
 				E2F41E7921DBF4F900658528 /* Sources */,
 				E2F41E7A21DBF4F900658528 /* Frameworks */,
 				E2F41E7B21DBF4F900658528 /* Resources */,
+				82F62BAD15D3FF2DF07C9D46 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,34 +225,79 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2F41E8B21DBF4FC00658528 /* LaunchScreen.storyboard in Resources */,
+				E2F41E9321DBF5F800658528 /* BTraffic.ttf in Resources */,
 				E2F41E8821DBF4FC00658528 /* Assets.xcassets in Resources */,
-				E2F41E8621DBF4F900658528 /* Main.storyboard in Resources */,
+				E2568E0821DD0C160010AB64 /* MainVC_Items.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		096586BCF62DE16DFF7D4139 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TVU Ticket System | Students-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		82F62BAD15D3FF2DF07C9D46 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TVU Ticket System | Students/Pods-TVU Ticket System | Students-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TVU Ticket System | Students/Pods-TVU Ticket System | Students-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E2F41E7921DBF4F900658528 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2F41E8321DBF4F900658528 /* ViewController.swift in Sources */,
+				E2F41E9721DC078A00658528 /* CustomTextView.swift in Sources */,
+				E227D07B21DDE61200171925 /* DataEntryViewController.swift in Sources */,
+				E2568E0621DCFEFD0010AB64 /* MainVC-ItemsCell + AutoLayout.swift in Sources */,
+				E2568E0221DCFA720010AB64 /* CustomImageView.swift in Sources */,
+				E2F41E8321DBF4F900658528 /* MainViewController.swift in Sources */,
 				E2F41E8121DBF4F900658528 /* AppDelegate.swift in Sources */,
+				E2568E0421DCFCE80010AB64 /* CardView.swift in Sources */,
+				E2568E0A21DD0D360010AB64 /* MainVCItemsModel.swift in Sources */,
+				E2568DFA21DCEAF40010AB64 /* UIView-Extension.swift in Sources */,
+				E2568E0021DCF9B90010AB64 /* MainVC-ItemsCell.swift in Sources */,
+				E2568DFE21DCF4830010AB64 /* MainVC-TableView.swift in Sources */,
+				E2568DFC21DCECAE0010AB64 /* MainViewController + AutoLayout.swift in Sources */,
+				E2F41E9521DBFE3800658528 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E2F41E8421DBF4F900658528 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E2F41E8521DBF4F900658528 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E2F41E8921DBF4FC00658528 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -280,6 +427,7 @@
 		};
 		E2F41E9021DBF4FC00658528 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0EC2196E5497598E85F29F5D /* Pods-TVU Ticket System | Students.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -289,8 +437,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Pooya.TVU-Ticket-System---Students";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Pooya.TVU-Ticket-Student";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pods/Backendless/SDK/ios/backendless/include/Backendless-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -298,6 +447,7 @@
 		};
 		E2F41E9121DBF4FC00658528 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F5138FEDE6502F3D5D60445 /* Pods-TVU Ticket System | Students.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -307,8 +457,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Pooya.TVU-Ticket-System---Students";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Pooya.TVU-Ticket-Student";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pods/Backendless/SDK/ios/backendless/include/Backendless-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

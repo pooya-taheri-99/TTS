@@ -11,13 +11,20 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    let APP_ID = "1A98A5F2-132A-AE25-FFFA-94DCAE88CA00"
+    let API_KEY = "C8F690B5-F097-7683-FFF8-B1A997E39F00"
+    
     var window: UIWindow?
-
+    
+    var backendlessInstance = Backendless.sharedInstance()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        backendlessInstance?.initApp(APP_ID, apiKey: API_KEY)
+        setupViewController()
         return true
     }
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -40,7 +47,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    
+    
+    private func setupViewController() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let mainVC = MainViewController()
+        window?.rootViewController = mainVC
+        mainVC.view.backgroundColor = UIColor.white
+        window?.addSubview(mainVC.view)
+        window?.makeKeyAndVisible()
+    }
 
-
-}
+}//class
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>انتخاب استان</string>
+	<string>انتخاب دانشکده</string>
+	<string> انتخاب رشته تحصیلی</string>
+	<string>انتخاب مقطع تحصیلی</string>
+	<string>تعیین نام و نام خانوادگی</string>
+	<string>تعیین شماره دانشجویی</string>
+	<string>انتخاب گیرنده پیام</string>
+	<string>متن پیام</string>
+</array>
+</plist>
