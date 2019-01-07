@@ -13,31 +13,18 @@ class CustomTextView:UITextView {
     
     let lightGrayX = UIColor.gray.withAlphaComponent(0.4)
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
         self.delegate = self
         self.text = "متن پیام خود را اینجا وارد کنید"
         self.textColor = lightGrayX
         self.textAlignment = .right
-        self.font = UIFont(name: "BTraffic", size: 17)
+        self.font = UIFont(name: "BTraffic", size: 20)
     }
-    
-    @IBInspectable var cornerRadius:CGFloat = 0.0 {
-        didSet {
-            updateTextFieldStyle()
-        }
-    }
-    
-    func updateTextFieldStyle() {
-        self.layer.cornerRadius = cornerRadius
-    }
-    
-    
-    override func prepareForInterfaceBuilder() {
-        updateTextFieldStyle()
-    }
-    
-    
     
 }//class
 

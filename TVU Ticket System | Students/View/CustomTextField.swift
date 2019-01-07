@@ -14,8 +14,12 @@ class CustomUITextField : UITextField {
     let customEdgeInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     let customLightGrayColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         self.layer.borderWidth = 1
         self.layer.borderColor = customLightGrayColor
         self.layer.masksToBounds = false
@@ -36,25 +40,6 @@ class CustomUITextField : UITextField {
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: customEdgeInset)
     }
-    
-    override func prepareForInterfaceBuilder() {
-        updateTextFieldStyle()
-    }
-    
-    @IBInspectable var cornerRadius:CGFloat = 0.0 {
-        didSet {
-            updateTextFieldStyle()
-        }
-    }
-    
-    
-    
-    func updateTextFieldStyle() {
-        self.layer.cornerRadius = cornerRadius
-    }
-    
-    
-    
-    
+ 
     
 }//class

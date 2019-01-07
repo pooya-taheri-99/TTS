@@ -20,7 +20,6 @@ extension MainVCItemsCell {
         //itemsLabel
         cardView.addSubview(itemsLabel)
         itemsLabel.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, trailing: cardView.trailingAnchor, bottom: cardView.bottomAnchor, height: nil, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
-        
     }
     
 }//extension

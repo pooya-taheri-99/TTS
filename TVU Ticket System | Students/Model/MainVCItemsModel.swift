@@ -13,16 +13,23 @@ class MainVCItemsModel {
     
     static func loadItems() -> [String] {
         var itemsTitle:[String] = []
+        
         if let fileURL = Bundle.main.url(forResource: "MainVC_Items", withExtension: "plist"){
+            
             if let data = try? Data(contentsOf: fileURL) {
+                
                 if let result = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) {
+                   
                     itemsTitle = result as! [String]
+                
                 }//if let result
                 
             }//if let data
            
         }//if let fileURL
+    
         return itemsTitle
+    
     }//loadItems
     
 }//class
