@@ -15,13 +15,29 @@ extension DataEntryViewController {
         titleLabel.anchor(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil, height: 30, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 42, left: 16, bottom: 0, right: 16))
     }
     
-    func autoLayoutForDataPickerView(){
-        view.addSubview(dataPickerView)
-        dataPickerView.anchor(top: titleLabel.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: confirmButton.topAnchor , height: nil, width: nil
-            , XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
+    func autoLayoutForUITableView(){
+        view.addSubview(tableViewItems)
+        tableViewItems.anchor(top: titleLabel.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.bottomAnchor  , height: nil, width: nil
+            , XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 16))
     }
     
     func autoLayoutForTextFields(){
+        autoLayoutForCardView()
+        cardView.addSubview(nameTextField)
+        cardView.addSubview(lastNameTextField)
+        cardView.addSubview(studentIdTextField)
+        
+        if selectedCellID == cellIdName.cell5.rawValue {
+            nameTextField.anchor(top: titleLabel.bottomAnchor, leading: cardView.leadingAnchor, trailing: cardView.trailingAnchor, bottom: lastNameTextField.topAnchor, height: 50, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top:42 , left: 16, bottom: 16, right: 16))
+            
+            lastNameTextField.anchor(top: nameTextField.bottomAnchor, leading: cardView.leadingAnchor, trailing: cardView.trailingAnchor, bottom: nil, height: 50, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top:16 , left: 16, bottom: 0, right: 16))
+        }else if selectedCellID == cellIdName.cell6.rawValue{
+            studentIdTextField.anchor(top: titleLabel.bottomAnchor, leading: cardView.leadingAnchor, trailing: cardView.trailingAnchor, bottom: nil, height: 50, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 42, left: 16, bottom: 16, right: 16))
+        }
+        
+        titleLabel.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, trailing: cardView.trailingAnchor, bottom: nil, height: 30, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 42, left: 16, bottom: 0, right: 16))
+        
+        autoLayoutForConfirmButton()
         
     }
     
@@ -33,10 +49,20 @@ extension DataEntryViewController {
         
     }
     
+    
+    
     func autoLayoutForConfirmButton() {
-        view.addSubview(confirmButton)
-        confirmButton.anchor(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.bottomAnchor, height: 45, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16))
+        cardView.addSubview(confirmButton)
+        confirmButton.anchor(top: nil, leading: cardView.leadingAnchor, trailing: cardView.trailingAnchor, bottom: cardView.bottomAnchor, height: 50, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16))
     }
+    
+    func autoLayoutForCardView(){
+        titleLabel.removeFromSuperview()
+        view.addSubview(cardView)
+        cardView.addSubview(titleLabel)
+        cardView.anchor(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.bottomAnchor, height: nil, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 32, left: 16, bottom: 16, right: 16))
+    }
+    
     
 }//extension
 

@@ -31,6 +31,14 @@ class MainVCItemsCell: UITableViewCell {
         return label
     }()
     
+    var subTitleLabel:UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont(name: "BTraffic", size: 16)
+        label.textColor = .lightGray
+        return label
+    }()
+    
     //MARK: - Overridden Method
     
     required init?(coder aDecoder: NSCoder) {
@@ -42,6 +50,10 @@ class MainVCItemsCell: UITableViewCell {
         setupView()
     }
     
+    override func prepareForReuse() {
+       subTitleLabel.text = nil
+    }
+    
     //MARK: - Helper Method
     
     private func setupView() {
@@ -50,8 +62,27 @@ class MainVCItemsCell: UITableViewCell {
         autoLayoutForMainVCItemsCell()
     }
     
-    func configureCell(itemsString:String) {
+    func configureCell(itemsString:String,student:Students) {
         self.itemsLabel.text = itemsString
+        switch cellID {
+        case cellIdName.cell1.rawValue:
+            subTitleLabel.text = student.st_province
+        case cellIdName.cell2.rawValue:
+            subTitleLabel.text = student.st_college
+        case cellIdName.cell3.rawValue:
+            subTitleLabel.text = student.st_course
+        case cellIdName.cell4.rawValue:
+            subTitleLabel.text = student.st_grade
+        case cellIdName.cell5.rawValue:
+            subTitleLabel.text = student.st_fullname
+        case cellIdName.cell6.rawValue:
+            subTitleLabel.text = student.st_ID
+        case cellIdName.cell7.rawValue:
+            subTitleLabel.text = student.st_receiverName
+        default:
+            break
+        }
     }
+    
     
 }//class

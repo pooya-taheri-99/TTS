@@ -26,11 +26,13 @@ class CardView : UIView {
     private func setupCardViewEffect() {
         self.backgroundColor = .white
         self.layer.cornerRadius = 4.0
+        self.layer.borderColor = UIColor.white.cgColor
+        self.layer.borderWidth = 0.5
         self.layer.masksToBounds = false
         self.layer.shadowOpacity = 1.0
-        self.layer.shadowRadius = 1.5
+        self.layer.shadowRadius = 2.5
         self.layer.shadowColor = customGrayShadowColor
-        self.layer.shadowOffset = CGSize(width: 0.2, height: 0.2)
+        self.layer.shadowOffset = CGSize(width: 0, height: 1.0)
     }
     
 }//class

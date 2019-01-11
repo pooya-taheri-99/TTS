@@ -3,10 +3,37 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "DataEntryViewController.setupViewBasedOnCellId(cellID:):DataEntryViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "receiverList">
+            </PersistentString>
+            <PersistentString
+               value = "courseList">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "DataEntryViewController.pickerView(_:didSelectRow:inComponent:):DataEntryViewController + PickerViewDelegateDataSource.swift">
          <PersistentStrings>
             <PersistentString
                value = "province">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainViewController.tableView(_:cellForRowAt:):MainViewController + TableView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "students.st_province">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainViewController.provinceSelected(provinceName:):MainViewController + DataEntryDelegate.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "students.st_province">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

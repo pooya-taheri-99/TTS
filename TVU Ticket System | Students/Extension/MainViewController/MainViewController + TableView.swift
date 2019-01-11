@@ -17,7 +17,7 @@ extension MainViewController : UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID) as! MainVCItemsCell
         let item = items[indexPath.row]
         cell.cellID = "cell\(indexPath.row + 1)"
-        cell.configureCell(itemsString: item)
+        cell.configureCell(itemsString: item,student:students)
         return cell
     }
     

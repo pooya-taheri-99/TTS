@@ -28,6 +28,9 @@ class MainViewController: UIViewController {
     var items:[String] = []
     var dataEntryVC:DataEntryViewController!
     let cellReuseID = "ItemsCell"
+    let students = Students()
+    let backendless = Backendless.sharedInstance()
+    
     
     //MARK: - UI Element
     
@@ -60,6 +63,10 @@ class MainViewController: UIViewController {
         setupTableView()
         autoLayoutForMainViewController()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableViewItems.reloadData()
+    }
 
     private func setupTableView() {
         tableViewItems.delegate = self
@@ -71,7 +78,13 @@ class MainViewController: UIViewController {
         if cellID == cellIdName.cell1.rawValue {
             showDataEntryVC(cellID: cellID)
         }else if cellID ==  cellIdName.cell2.rawValue {
-            showDataEntryVC(cellID: cellID)
+            if students.st_province == nil{
+                DispatchQueue.main.async {
+                    TVUAlertView.showAlert(title: "هشدار", message: "ابتدا باید استان مورد نظر را انتخاب کنید", vc: self, btnText: "باشه")
+                }
+            }else{
+                showDataEntryVC(cellID: cellID)
+            }
         }else if cellID ==  cellIdName.cell3.rawValue {
             showDataEntryVC(cellID: cellID)
         }else if cellID ==  cellIdName.cell4.rawValue {
@@ -91,10 +104,21 @@ class MainViewController: UIViewController {
         DispatchQueue.main.async { [unowned self] in
             self.dataEntryVC = DataEntryViewController()
             self.dataEntryVC.selectedCellID = cellID
+            self.dataEntryVC.delegate = self
             self.present(self.dataEntryVC, animated: true, completion: nil)
         }
     }
     
+    private func saveDataToBackendlessDataBase(){
+        let dataStore = self.backendless?.data.of(Students.self)
+        dataStore?.save(self.students, response: { (contact) in
+            DispatchQueue.main.async { [unowned self] in
+                TVUAlertView.showAlert(title: "پیغام", message: "پیام شما با موفقیت ذخیره شد.", vc: self, btnText: "تایید")
+            }
+        }, error: { (fault) in
+            print("Fault:\(String(describing: fault?.detail))")
+        })
+    }
    
     
 }//class

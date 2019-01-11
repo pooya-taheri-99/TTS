@@ -15,19 +15,27 @@ class DataEntryViewController: UIViewController {
     var selectedCellID:String?
     var provincesList:[String] = []
     var collegeList:[String] = []
-    let alertMessage = "لطفا یکی از استان های زیر را  انتخاب کنید"
-    let alertTitle = "هشدار!!!"
+    var courseList:[String] = []
+    var gradeList:[String] = []
+    var receiverList:[String] = []
+    weak var delegate:DataEntryDelegate?
     static var province:String?
     private var provinceReader:ProvinceReader!
     private var collegListReader:CollegeListReader!
+    private var courseListReader:CourseListReader!
+    private var gradListReader:GradeListReader!
+    private var receiverListReader:ReceiverListReader!
     
     //MARK: - UI Element
     
-    var dataPickerView:UIPickerView = {
-        let pickerView = UIPickerView()
-        pickerView.backgroundColor = .lightGray
-        pickerView.layer.cornerRadius = 6.0
-        return pickerView
+    var tableViewItems:UITableView = {
+        let tableView = UITableView()
+        return tableView
+    }()
+    
+    var cardView:CardView = {
+        let view = CardView()
+        return view
     }()
     
     var nameTextField:CustomUITextField = {
@@ -39,11 +47,21 @@ class DataEntryViewController: UIViewController {
         return textField
     }()
     
-    var lastNameTextField:CustomUITextField = {
+     var lastNameTextField:CustomUITextField = {
         let textField = CustomUITextField()
         textField.placeholder = "نام خانوادگی خود را وارد کنید..."
         textField.textAlignment = .right
         textField.textColor = .black
+        textField.font = UIFont(name: "BTraffic", size: 17)
+        return textField
+    }()
+    
+    var studentIdTextField:CustomUITextField = {
+        let textField = CustomUITextField()
+        textField.placeholder = "شماره دانشجویی خود را وارد کنید..."
+        textField.textAlignment = .right
+        textField.textColor = .black
+        textField.keyboardType = .decimalPad
         textField.font = UIFont(name: "BTraffic", size: 17)
         return textField
     }()
@@ -86,10 +104,9 @@ class DataEntryViewController: UIViewController {
     
     //MARK: - Helper Method
     private func setupView() {
-        view.backgroundColor = .white
-        setupPickerView()
+        view.backgroundColor = UIColor.white
+        setupTableView()
         autoLayoutTitleLabel()
-        autoLayoutForConfirmButton()
         if let cellID = selectedCellID {
             setupViewBasedOnCellId(cellID: cellID)
         }
@@ -104,39 +121,77 @@ class DataEntryViewController: UIViewController {
     private func setupViewBasedOnCellId(cellID:String){
         if cellID == cellIdName.cell1.rawValue {
             titleLabel.text = "انتخاب استان"
-            autoLayoutForDataPickerView()
+            autoLayoutForUITableView()
             provinceReader = ProvinceReader()
             provincesList = provinceReader.parseProvinceJSON()
-            provincesList.insert("همه استان ها", at: 0)
         }else if cellID == cellIdName.cell2.rawValue {
-            titleLabel.text = "انتخاب دانشکده"
-            autoLayoutForDataPickerView()
+            titleLabel.text = "انتخاب دانشکده..."
+            autoLayoutForUITableView()
             collegListReader = CollegeListReader()
             if let prvnc = DataEntryViewController.province {
                 collegeList = collegListReader.parseCollegeListJSON(provinceName: prvnc)
             }
         }else if cellID == cellIdName.cell3.rawValue {
-            
+            titleLabel.text = "انتخاب رشته تحصیلی"
+            autoLayoutForUITableView()
+            courseListReader = CourseListReader()
+            courseList = courseListReader.readCourseListFromFile()
         }else if cellID == cellIdName.cell4.rawValue {
-            
+            titleLabel.text = "انتخاب مقطع تحصیلی"
+            autoLayoutForUITableView()
+            gradListReader = GradeListReader()
+            gradeList = gradListReader.readGradList()
         }else if cellID == cellIdName.cell5.rawValue {
-            
+            titleLabel.text = "تعیین نام و نام خانوادگی"
+            autoLayoutForTextFields()
         }else if cellID == cellIdName.cell6.rawValue {
-            
+            titleLabel.text = "تعیین شماره دانشجویی"
+            autoLayoutForTextFields()
         }else if cellID == cellIdName.cell7.rawValue {
-            
+            titleLabel.text = "انتخاب گیرنده پیام"
+            autoLayoutForUITableView()
+            receiverListReader = ReceiverListReader()
+            receiverList = receiverListReader.readReceiverList()
         }else if cellID == cellIdName.cell8.rawValue {
             
         }
-    }
+        
+    }//func
     
-    private func setupPickerView(){
-        dataPickerView.dataSource = self
-        dataPickerView.delegate = self
-    }
+    private func setupTableView(){
+        tableViewItems.dataSource = self
+        tableViewItems.delegate = self
+        tableViewItems.register(DataEntryVCItemsCell.self, forCellReuseIdentifier: "itemsCell")
+        tableViewItems.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tableViewItems.tableFooterView = UIView()
+    
+    }//func
     
     @objc private func handelConfirmAction(_ btn:UIButton){
-        self.dismiss(animated: true, completion: nil)
-    }
-
+        if selectedCellID == cellIdName.cell5.rawValue {
+            let name = nameTextField.text
+            let lastName = lastNameTextField.text
+            
+            if name != nil && name != "" && lastName != nil && lastName != ""{
+                let fullname = name! + " " + lastName!
+                delegate?.getFullName(fullName: fullname)
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                TVUAlertView.showAlert(title: "خطا", message: "لطفا مقادیر لازم را وارد کنید", vc: self, btnText: "باشه")
+                return
+            }
+        }else if selectedCellID == cellIdName.cell6.rawValue {
+            let studentId = studentIdTextField.text
+            if studentId != nil && studentId != "" && !(studentId?.isEmpty)!{
+                delegate?.getStudentId(id: studentId!)
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                TVUAlertView.showAlert(title: "خطا", message: "لطفا مقادیر لازم را وارد کنید", vc: self, btnText: "باشه")
+                return
+            }
+        }
+       
+        
+    }//func
+    
 }//class

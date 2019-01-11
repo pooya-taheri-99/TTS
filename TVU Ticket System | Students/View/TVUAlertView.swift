@@ -10,10 +10,10 @@ import UIKit
 
 
 class TVUAlertView {
-    static func showAlert(title:String,message:String,vc:UIViewController) {
+    static func showAlert(title:String,message:String,vc:UIViewController,btnText:String) {
         
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "باشه الان انتخاب می کنم", style: .default, handler: nil)
+        let confirmAction = UIAlertAction(title: btnText, style: .default, handler: nil)
         alertVC.addAction(confirmAction)
         vc.present(alertVC, animated: true, completion: nil)
         

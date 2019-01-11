@@ -8,7 +8,6 @@
 
 import UIKit
 
-@IBDesignable
 class CustomUITextField : UITextField {
     
     let customEdgeInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
@@ -20,12 +19,15 @@ class CustomUITextField : UITextField {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.borderWidth = 1
+        self.delegate = self
+        self.layer.borderWidth = 0.5
         self.layer.borderColor = customLightGrayColor
         self.layer.masksToBounds = false
+        self.layer.cornerRadius = 4.0
+        self.backgroundColor = .white
         self.layer.shadowColor = UIColor.gray.withAlphaComponent(0.4).cgColor
-        self.layer.shadowOffset = CGSize(width: 0.3, height: 0.3)
-        self.layer.shadowRadius = 2.0
+        self.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        self.layer.shadowRadius = 3.0
         self.layer.shadowOpacity = 1.0
     }
     
@@ -43,3 +45,7 @@ class CustomUITextField : UITextField {
  
     
 }//class
+
+extension CustomUITextField: UITextFieldDelegate {
+    
+}
