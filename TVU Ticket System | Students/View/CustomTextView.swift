@@ -24,6 +24,13 @@ class CustomTextView:UITextView {
         self.textColor = lightGrayX
         self.textAlignment = .right
         self.font = UIFont(name: "BTraffic", size: 20)
+        self.layer.cornerRadius = 5.0
+        self.layer.shadowColor = lightGrayX.cgColor
+        self.backgroundColor = .white
+        self.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        self.layer.shadowRadius = 5.0
+        self.layer.shadowOpacity = 1.0
+        self.layer.masksToBounds = false
     }
     
 }//class

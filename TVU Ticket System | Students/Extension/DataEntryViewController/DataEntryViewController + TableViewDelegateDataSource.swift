@@ -42,6 +42,9 @@ extension DataEntryViewController : UITableViewDataSource {
             cell.textLabel?.text = gradeList[indexPath.row]
         case cellIdName.cell7.rawValue:
             cell.textLabel?.text = receiverList[indexPath.row]
+            if indexPath.row == 0{
+                cell.textLabel?.font = UIFont(name: "Btraffic", size: 20)
+            }
         default:
             return DataEntryVCItemsCell()
         }

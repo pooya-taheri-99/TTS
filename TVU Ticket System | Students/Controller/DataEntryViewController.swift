@@ -153,7 +153,8 @@ class DataEntryViewController: UIViewController {
             receiverListReader = ReceiverListReader()
             receiverList = receiverListReader.readReceiverList()
         }else if cellID == cellIdName.cell8.rawValue {
-            
+            titleLabel.text = "متن پیام"
+            autoLayoutForTextView()
         }
         
     }//func
@@ -184,6 +185,15 @@ class DataEntryViewController: UIViewController {
             let studentId = studentIdTextField.text
             if studentId != nil && studentId != "" && !(studentId?.isEmpty)!{
                 delegate?.getStudentId(id: studentId!)
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                TVUAlertView.showAlert(title: "خطا", message: "لطفا مقادیر لازم را وارد کنید", vc: self, btnText: "باشه")
+                return
+            }
+        }else if selectedCellID == cellIdName.cell8.rawValue{
+            let comment = ticketTextView.text
+            if comment != nil && comment != "" && !(comment?.isEmpty)!{
+                delegate?.getCommentAndAttachment(comment: comment)
                 self.dismiss(animated: true, completion: nil)
             }else{
                 TVUAlertView.showAlert(title: "خطا", message: "لطفا مقادیر لازم را وارد کنید", vc: self, btnText: "باشه")

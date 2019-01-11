@@ -42,13 +42,12 @@ extension DataEntryViewController {
     }
     
     func autoLayoutForTextView(){
-        
+        autoLayoutForCardView()
+        titleLabel.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, trailing: cardView.trailingAnchor, bottom: nil, height: 30, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 42, left: 16, bottom: 0, right: 16))
+        cardView.addSubview(ticketTextView)
+        ticketTextView.anchor(top: titleLabel.bottomAnchor, leading: cardView.leadingAnchor, trailing: cardView.trailingAnchor, bottom: nil, height: 200, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 42, left: 16, bottom: 0, right: 16))
+        autoLayoutForConfirmButton()
     }
-    
-    func autoLayoutForAttachmentButton(){
-        
-    }
-    
     
     
     func autoLayoutForConfirmButton() {

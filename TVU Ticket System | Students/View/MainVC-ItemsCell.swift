@@ -79,6 +79,8 @@ class MainVCItemsCell: UITableViewCell {
             subTitleLabel.text = student.st_ID
         case cellIdName.cell7.rawValue:
             subTitleLabel.text = student.st_receiverName
+        case cellIdName.cell8.rawValue:
+            subTitleLabel.text = student.st_comment
         default:
             break
         }
