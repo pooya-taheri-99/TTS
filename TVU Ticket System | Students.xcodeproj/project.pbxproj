@@ -31,6 +31,12 @@
 		E2568E0A21DD0D360010AB64 /* MainVCItemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568E0921DD0D360010AB64 /* MainVCItemsModel.swift */; };
 		E2647B1121E1286700491FD3 /* CollegeListReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2647B1021E1286700491FD3 /* CollegeListReader.swift */; };
 		E2647B1621E128CE00491FD3 /* TVU_CollegeList.json in Resources */ = {isa = PBXBuildFile; fileRef = E2647B1521E128CE00491FD3 /* TVU_CollegeList.json */; };
+		E292510321ED9DE40047C2C0 /* EnteranceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E292510221ED9DE40047C2C0 /* EnteranceViewController.swift */; };
+		E292510621EDA1740047C2C0 /* EnteranceViewController + AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E292510521EDA1740047C2C0 /* EnteranceViewController + AutoLayout.swift */; };
+		E292510821EDD6F10047C2C0 /* UserType.plist in Resources */ = {isa = PBXBuildFile; fileRef = E292510721EDD6F10047C2C0 /* UserType.plist */; };
+		E292510A21EDD77E0047C2C0 /* UserTypeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E292510921EDD77E0047C2C0 /* UserTypeReader.swift */; };
+		E292510C21EDD8D80047C2C0 /* EnteranceViewController + TableViewDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E292510B21EDD8D80047C2C0 /* EnteranceViewController + TableViewDataSourceDelegate.swift */; };
+		E292510E21EDDB9F0047C2C0 /* EnteranceVC-Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E292510D21EDDB9F0047C2C0 /* EnteranceVC-Cell.swift */; };
 		E2BEB2B421E3C59300CD4349 /* MainViewController + DataEntryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BEB2B321E3C59300CD4349 /* MainViewController + DataEntryDelegate.swift */; };
 		E2BEB2B621E3C64C00CD4349 /* Students.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BEB2B521E3C64C00CD4349 /* Students.swift */; };
 		E2BEB2B821E3C72F00CD4349 /* BackendlessOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BEB2B721E3C72F00CD4349 /* BackendlessOperations.swift */; };
@@ -73,6 +79,12 @@
 		E2568E0921DD0D360010AB64 /* MainVCItemsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCItemsModel.swift; sourceTree = "<group>"; };
 		E2647B1021E1286700491FD3 /* CollegeListReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeListReader.swift; sourceTree = "<group>"; };
 		E2647B1521E128CE00491FD3 /* TVU_CollegeList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TVU_CollegeList.json; sourceTree = "<group>"; };
+		E292510221ED9DE40047C2C0 /* EnteranceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnteranceViewController.swift; sourceTree = "<group>"; };
+		E292510521EDA1740047C2C0 /* EnteranceViewController + AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnteranceViewController + AutoLayout.swift"; sourceTree = "<group>"; };
+		E292510721EDD6F10047C2C0 /* UserType.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = UserType.plist; sourceTree = "<group>"; };
+		E292510921EDD77E0047C2C0 /* UserTypeReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeReader.swift; sourceTree = "<group>"; };
+		E292510B21EDD8D80047C2C0 /* EnteranceViewController + TableViewDataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnteranceViewController + TableViewDataSourceDelegate.swift"; sourceTree = "<group>"; };
+		E292510D21EDDB9F0047C2C0 /* EnteranceVC-Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnteranceVC-Cell.swift"; sourceTree = "<group>"; };
 		E2BEB2B321E3C59300CD4349 /* MainViewController + DataEntryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController + DataEntryDelegate.swift"; sourceTree = "<group>"; };
 		E2BEB2B521E3C64C00CD4349 /* Students.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Students.swift; sourceTree = "<group>"; };
 		E2BEB2B721E3C72F00CD4349 /* BackendlessOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendlessOperations.swift; sourceTree = "<group>"; };
@@ -160,6 +172,7 @@
 			children = (
 				E2F41E8221DBF4F900658528 /* MainViewController.swift */,
 				E227D07A21DDE61200171925 /* DataEntryViewController.swift */,
+				E292510221ED9DE40047C2C0 /* EnteranceViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -175,6 +188,7 @@
 				E2568DFF21DCF9B90010AB64 /* MainVC-ItemsCell.swift */,
 				E2568DFD21DCF4830010AB64 /* MainVC-TableView.swift */,
 				E2025A9621E140AB00948D54 /* TVUAlertView.swift */,
+				E292510D21EDDB9F0047C2C0 /* EnteranceVC-Cell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -190,6 +204,7 @@
 				E2BEB2B721E3C72F00CD4349 /* BackendlessOperations.swift */,
 				E2E54AE121E7C07300857A5A /* GradeListReader.swift */,
 				E24019B021E85BFB008399C9 /* ReciverListReader.swift */,
+				E292510921EDD77E0047C2C0 /* UserTypeReader.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,6 +222,7 @@
 		E2568DF821DCEADE0010AB64 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E292510421EDA12A0047C2C0 /* EnteranceViewController */,
 				E227D08021DE04BD00171925 /* DataEntryViewController */,
 				E227D07E21DE049A00171925 /* MainViewController */,
 				E227D07F21DE04B100171925 /* UIView */,
@@ -238,8 +254,18 @@
 				E2025A9821E1453D00948D54 /* CourseList.plist */,
 				E2E54AE521E7C0C500857A5A /* GradeList.plist */,
 				E24019AE21E85B14008399C9 /* ReceiverList.plist */,
+				E292510721EDD6F10047C2C0 /* UserType.plist */,
 			);
 			path = PLIST;
+			sourceTree = "<group>";
+		};
+		E292510421EDA12A0047C2C0 /* EnteranceViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E292510521EDA1740047C2C0 /* EnteranceViewController + AutoLayout.swift */,
+				E292510B21EDD8D80047C2C0 /* EnteranceViewController + TableViewDataSourceDelegate.swift */,
+			);
+			path = EnteranceViewController;
 			sourceTree = "<group>";
 		};
 		E2F41E7421DBF4F900658528 = {
@@ -338,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E24019AF21E85B14008399C9 /* ReceiverList.plist in Resources */,
+				E292510821EDD6F10047C2C0 /* UserType.plist in Resources */,
 				E2E54AE621E7C0C500857A5A /* GradeList.plist in Resources */,
 				E2025A9921E1453D00948D54 /* CourseList.plist in Resources */,
 				E227D08821DE1E9A00171925 /* Province.json in Resources */,
@@ -400,6 +427,7 @@
 				E2647B1121E1286700491FD3 /* CollegeListReader.swift in Sources */,
 				E2BEB2B821E3C72F00CD4349 /* BackendlessOperations.swift in Sources */,
 				E2F41E9721DC078A00658528 /* CustomTextView.swift in Sources */,
+				E292510C21EDD8D80047C2C0 /* EnteranceViewController + TableViewDataSourceDelegate.swift in Sources */,
 				E2025A9E21E1483000948D54 /* DataEntryDelegate.swift in Sources */,
 				E227D07B21DDE61200171925 /* DataEntryViewController.swift in Sources */,
 				E24019B121E85BFB008399C9 /* ReciverListReader.swift in Sources */,
@@ -408,6 +436,7 @@
 				E2F41E8321DBF4F900658528 /* MainViewController.swift in Sources */,
 				E227D08621DE1D7500171925 /* ProvinceReader.swift in Sources */,
 				E2F41E8121DBF4F900658528 /* AppDelegate.swift in Sources */,
+				E292510E21EDDB9F0047C2C0 /* EnteranceVC-Cell.swift in Sources */,
 				E2568E0421DCFCE80010AB64 /* CardView.swift in Sources */,
 				E2568E0A21DD0D360010AB64 /* MainVCItemsModel.swift in Sources */,
 				E2E54AE221E7C07300857A5A /* GradeListReader.swift in Sources */,
@@ -415,12 +444,15 @@
 				E2568DFA21DCEAF40010AB64 /* UIView-Extension.swift in Sources */,
 				E227D07D21DDF9C100171925 /* MainViewController + TableView.swift in Sources */,
 				E2025A9B21E145EC00948D54 /* CourseListReader.swift in Sources */,
+				E292510621EDA1740047C2C0 /* EnteranceViewController + AutoLayout.swift in Sources */,
 				E2E54AE021E7B5EA00857A5A /* DataEntry-ItemsCell.swift in Sources */,
 				E2568E0021DCF9B90010AB64 /* MainVC-ItemsCell.swift in Sources */,
+				E292510321ED9DE40047C2C0 /* EnteranceViewController.swift in Sources */,
 				E2025A9721E140AB00948D54 /* TVUAlertView.swift in Sources */,
 				E227D08421DE1B3C00171925 /* DataEntryViewController + TableViewDelegateDataSource.swift in Sources */,
 				E2568DFE21DCF4830010AB64 /* MainVC-TableView.swift in Sources */,
 				E2BEB2B621E3C64C00CD4349 /* Students.swift in Sources */,
+				E292510A21EDD77E0047C2C0 /* UserTypeReader.swift in Sources */,
 				E2BEB2B421E3C59300CD4349 /* MainViewController + DataEntryDelegate.swift in Sources */,
 				E2568DFC21DCECAE0010AB64 /* MainViewController + AutoLayout.swift in Sources */,
 				E2F41E9521DBFE3800658528 /* CustomTextField.swift in Sources */,

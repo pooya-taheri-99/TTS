@@ -9,13 +9,12 @@
 import UIKit
 
 @objcMembers
-class Students {
+class Students : NSObject{
     var st_fullname:String?
     var st_ID:String?
     var st_province:String?
     var st_college:String?
     var st_comment:String?
-    var st_attachment:String?
     var st_course:String?
     var st_grade:String?
     var st_receiverName:String?

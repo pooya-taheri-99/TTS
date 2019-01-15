@@ -13,19 +13,23 @@ import UIKit
 
 extension DataEntryViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch  selectedCellID {
-        case cellIdName.cell1.rawValue:
-            return provincesList.count
-        case cellIdName.cell2.rawValue:
-            return collegeList.count
-        case cellIdName.cell3.rawValue:
-            return courseList.count
-        case cellIdName.cell4.rawValue:
-            return gradeList.count
-        case cellIdName.cell7.rawValue:
-            return receiverList.count
-        default:
-            return 0
+        if studentTickes.count > 0 {
+            return studentTickes.count
+        }else{
+            switch  selectedCellID {
+            case cellIdName.cell1.rawValue:
+                return provincesList.count
+            case cellIdName.cell2.rawValue:
+                return collegeList.count
+            case cellIdName.cell3.rawValue:
+                return courseList.count
+            case cellIdName.cell4.rawValue:
+                return gradeList.count
+            case cellIdName.cell7.rawValue:
+                return receiverList.count
+            default:
+                return 0
+            }
         }
     }
     

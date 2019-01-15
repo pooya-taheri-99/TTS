@@ -14,35 +14,51 @@ extension MainViewController : DataEntryDelegate {
     
     
     func provinceSelected(provinceName: String?) {
-        students.st_province = provinceName
+        if let province = provinceName {
+            students.st_province = province
+        }
     }
     
     func collegeSelected(collegeName: String?) {
-        students.st_college = collegeName
+        if let college = collegeName {
+            students.st_college = college
+        }
     }
     
     func courseSelected(courseName: String?) {
-        students.st_course = courseName
+        if let course = courseName {
+            students.st_course = course
+        }
     }
     
     func gradeSelected(gradeName: String?) {
-        students.st_grade = gradeName
+        if let grade = gradeName {
+            students.st_grade = grade
+        }
     }
     
     func getFullName(fullName: String?) {
-        students.st_fullname = fullName
+        if let fullname = fullName {
+            students.st_fullname = fullname
+        }
     }
     
     func getStudentId(id: String?) {
-        students.st_ID = id
+        if let id = id {
+            students.st_ID = id
+        }
     }
     
     func receiverSelected(receiverName: String?) {
-        students.st_receiverName = receiverName
+        if let receiver = receiverName {
+            students.st_receiverName = receiver
+        }
     }
     
     func getCommentAndAttachment(comment: String?) {
-        students.st_comment = comment
+        if let comment = comment {
+            students.st_comment = comment
+        }
     }
     
 }

@@ -30,6 +30,17 @@ class MainViewController: UIViewController {
     let cellReuseID = "ItemsCell"
     let students = Students()
     let backendless = Backendless.sharedInstance()
+    private var activityIndicator:UIActivityIndicatorView!
+    
+    //MARK: - Computed Properties
+    
+    var isStudentModelFilledUp:Bool {
+        if students.st_province != nil && students.st_college != nil && students.st_course != nil && students.st_fullname != nil && students.st_grade != nil && students.st_ID != nil && students.st_receiverName != nil && students.st_comment != nil {
+            return true
+        }else{
+            return false
+        }
+    }
     
     
     //MARK: - UI Element
@@ -38,7 +49,18 @@ class MainViewController: UIViewController {
         let imageView = CustomImageView(frame: .zero)
         imageView.image = UIImage(named: "tvu-logo")
         imageView.contentMode = .scaleAspectFit
+
         return imageView
+    }()
+    
+    var sendButton:UIButton = {
+        let btn = UIButton()
+        btn.setTitle("ارسال", for: .normal)
+        btn.setTitleColor(#colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1), for: .normal)
+        btn.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .disabled)
+        btn.titleLabel?.font = UIFont(name: "BTraffic", size: 21)
+        btn.isEnabled = false
+        return btn
     }()
     
     var tableViewItems:MainVCTableView = {
@@ -60,17 +82,26 @@ class MainViewController: UIViewController {
     //MARK: - Helper Method
     
     private func setupView() {
+        view.backgroundColor = .white
         setupTableView()
         autoLayoutForMainViewController()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tableViewItems.reloadData()
+        tableViewItems.layoutIfNeeded()
+        if isStudentModelFilledUp {
+            sendButton.isEnabled = true
+            setupButtonsAction()
+        }
+        
     }
+    
 
     private func setupTableView() {
         tableViewItems.delegate = self
         tableViewItems.dataSource = self
+        tableViewItems.backgroundColor = .white
         items = MainVCItemsModel.loadItems()
     }
     
@@ -110,14 +141,55 @@ class MainViewController: UIViewController {
     }
     
     private func saveDataToBackendlessDataBase(){
-        let dataStore = self.backendless?.data.of(Students.self)
-        dataStore?.save(self.students, response: { (contact) in
-            DispatchQueue.main.async { [unowned self] in
-                TVUAlertView.showAlert(title: "پیغام", message: "پیام شما با موفقیت ذخیره شد.", vc: self, btnText: "تایید")
+        startActivityIndicator()
+        let dataStore = Backendless.sharedInstance()?.data.of(Students().ofClass())
+        dataStore?.save(self.students, response: { [unowned self] (_) in
+            DispatchQueue.main.async {[unowned self] in
+                self.deleteStudentData(student: self.students)
+                self.sendButton.isEnabled = false
+                self.tableViewItems.reloadData()
+                self.stopActivityIndicator()
+                TVUAlertView.showAlert(title: "پیغام", message: "تیکت شما با موفقیت ذخیره شد!", vc: self, btnText: "تایید")
             }
-        }, error: { (fault) in
-            print("Fault:\(String(describing: fault?.detail))")
+        }, error: { (f) in
+            print(f?.detail ?? "")
         })
+    }
+    
+    private func deleteStudentData(student:Students){
+        student.st_college = nil
+        student.st_comment = nil
+        student.st_ID = nil
+        student.st_course = nil
+        student.st_fullname = nil
+        student.st_grade = nil
+        student.st_province = nil
+        student.st_receiverName = nil
+    }
+    
+    private func startActivityIndicator(){
+        activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+        activityIndicator.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        activityIndicator.center = view.center
+        activityIndicator.layer.cornerRadius = 4.0
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+    }
+    
+    private func stopActivityIndicator(){
+        if activityIndicator.isAnimating {
+            activityIndicator.stopAnimating()
+        }
+    }
+    
+    private func setupButtonsAction(){
+        sendButton.addTarget(self, action: #selector(handleSendButton(_:)), for: .touchUpInside)
+    }
+    
+    @objc private func handleSendButton(_ button:UIButton) {
+        saveDataToBackendlessDataBase()
     }
    
     

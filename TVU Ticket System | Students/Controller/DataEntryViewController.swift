@@ -13,11 +13,13 @@ class DataEntryViewController: UIViewController {
     //MARK: - Properteis
     
     var selectedCellID:String?
+    var userType:String?
     var provincesList:[String] = []
     var collegeList:[String] = []
     var courseList:[String] = []
     var gradeList:[String] = []
     var receiverList:[String] = []
+    var studentTickes:[Any] = []
     weak var delegate:DataEntryDelegate?
     static var province:String?
     private var provinceReader:ProvinceReader!
@@ -25,6 +27,7 @@ class DataEntryViewController: UIViewController {
     private var courseListReader:CourseListReader!
     private var gradListReader:GradeListReader!
     private var receiverListReader:ReceiverListReader!
+    private let dataStore = Backendless.sharedInstance()?.data.of(Students.ofClass())
     
     //MARK: - UI Element
     
@@ -68,7 +71,6 @@ class DataEntryViewController: UIViewController {
     
     var ticketTextView:CustomTextView = {
         let textView = CustomTextView()
-        
         return textView
     }()
     
@@ -107,12 +109,19 @@ class DataEntryViewController: UIViewController {
         view.backgroundColor = UIColor.white
         setupTableView()
         autoLayoutTitleLabel()
-        if let cellID = selectedCellID {
-            setupViewBasedOnCellId(cellID: cellID)
+        if userType != nil{
+            titleLabel.text = "لیست تیکت ها"
+            autoLayoutForUITableView()
+            studentTickes = dataStore?.find() as! [Dictionary<String,Any>]
+            print(studentTickes)
+        }else{
+            if let cellID = selectedCellID {
+                setupViewBasedOnCellId(cellID: cellID)
+            }
+            setupActionForButton()
         }
-        setupActionForButton()
         
-    }
+    }//func
     
     private func setupActionForButton() {
         confirmButton.addTarget(self, action: #selector(handelConfirmAction(_:)), for: .touchUpInside)
@@ -125,7 +134,7 @@ class DataEntryViewController: UIViewController {
             provinceReader = ProvinceReader()
             provincesList = provinceReader.parseProvinceJSON()
         }else if cellID == cellIdName.cell2.rawValue {
-            titleLabel.text = "انتخاب دانشکده..."
+            titleLabel.text = "انتخاب دانشکده"
             autoLayoutForUITableView()
             collegListReader = CollegeListReader()
             if let prvnc = DataEntryViewController.province {
@@ -170,8 +179,8 @@ class DataEntryViewController: UIViewController {
     
     @objc private func handelConfirmAction(_ btn:UIButton){
         if selectedCellID == cellIdName.cell5.rawValue {
-            let name = nameTextField.text
-            let lastName = lastNameTextField.text
+            let name = nameTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+            let lastName = lastNameTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             
             if name != nil && name != "" && lastName != nil && lastName != ""{
                 let fullname = name! + " " + lastName!
@@ -182,17 +191,22 @@ class DataEntryViewController: UIViewController {
                 return
             }
         }else if selectedCellID == cellIdName.cell6.rawValue {
-            let studentId = studentIdTextField.text
+            let studentId = studentIdTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+            
             if studentId != nil && studentId != "" && !(studentId?.isEmpty)!{
-                delegate?.getStudentId(id: studentId!)
-                self.dismiss(animated: true, completion: nil)
+                if isStudentID(st_ID: studentId!){
+                    delegate?.getStudentId(id: studentId!)
+                    self.dismiss(animated: true, completion: nil)
+                }else{
+                    TVUAlertView.showAlert(title: "خطا", message: "شماره دانشجویی معتبر نیست \n ", vc: self, btnText: "باشه")
+                }
             }else{
-                TVUAlertView.showAlert(title: "خطا", message: "لطفا مقادیر لازم را وارد کنید", vc: self, btnText: "باشه")
+                TVUAlertView.showAlert(title: "خطا", message: "لطفا شماره دانشجویی خود را وارد کنید", vc: self, btnText: "باشه")
                 return
             }
         }else if selectedCellID == cellIdName.cell8.rawValue{
-            let comment = ticketTextView.text
-            if comment != nil && comment != "" && !(comment?.isEmpty)!{
+            let comment = ticketTextView.text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+            if comment != "" && !(comment.isEmpty) && comment != "متن پیام خود را اینجا وارد کنید"{
                 delegate?.getCommentAndAttachment(comment: comment)
                 self.dismiss(animated: true, completion: nil)
             }else{
@@ -203,5 +217,10 @@ class DataEntryViewController: UIViewController {
        
         
     }//func
+    
+    private func isStudentID(st_ID:String) -> Bool{
+        guard st_ID.count == 14 else {return false}
+        return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: st_ID))
+    }
     
 }//class

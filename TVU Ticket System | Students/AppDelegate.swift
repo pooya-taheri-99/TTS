@@ -11,8 +11,8 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    let APP_ID = "1A98A5F2-132A-AE25-FFFA-94DCAE88CA00"
-    let API_KEY = "C8F690B5-F097-7683-FFF8-B1A997E39F00"
+    let APP_ID = "0189D3C3-383E-C1A2-FFD5-D9B7E21E6500"
+    let API_KEY = "2F68D679-0704-628C-FF4A-9AF4B8681300"
     
     var window: UIWindow?
     
@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        backendlessInstance?.initApp(APP_ID, apiKey: API_KEY)
+        backendlessInstance!.initApp(APP_ID, apiKey: API_KEY)
         setupViewController()
         return true
     }
@@ -52,10 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupViewController() {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let mainVC = MainViewController()
-        window?.rootViewController = mainVC
-        mainVC.view.backgroundColor = UIColor.white
-        window?.addSubview(mainVC.view)
+        let enterancVC = EnteranceViewController()
+        window?.rootViewController = enterancVC
+        enterancVC.view.backgroundColor = .white
+        window?.addSubview(enterancVC.view)
         window?.makeKeyAndVisible()
     }
 
