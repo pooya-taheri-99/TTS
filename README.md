@@ -1,2 +1,3 @@
 # TVU-Ticketing-System-Student
-TVU-Ticketing-System-Students
+سامانه تیکتینگ دانشگاه فنی و حرفه ای
+دانشکده فنی و حرفه ای شمسی پور
