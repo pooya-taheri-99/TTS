@@ -8,9 +8,6 @@
 
 import UIKit
 
-
-
-
 extension DataEntryViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if studentTickes.count > 0 {
@@ -35,29 +32,33 @@ extension DataEntryViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemsCell", for: indexPath) as! DataEntryVCItemsCell
-        switch  selectedCellID {
-        case cellIdName.cell1.rawValue:
-            cell.textLabel?.text = provincesList[indexPath.row]
-        case cellIdName.cell2.rawValue:
-            cell.textLabel?.text = collegeList[indexPath.row]
-        case cellIdName.cell3.rawValue:
-            cell.textLabel?.text = courseList[indexPath.row]
-        case cellIdName.cell4.rawValue:
-            cell.textLabel?.text = gradeList[indexPath.row]
-        case cellIdName.cell7.rawValue:
-            cell.textLabel?.text = receiverList[indexPath.row]
-            if indexPath.row == 0{
-                cell.textLabel?.font = UIFont(name: "Btraffic", size: 20)
+        let row = indexPath.row
+        if userType != nil{
+            let ticket = studentTickes[row]
+            cell.configureCellForUserType(ticket: ticket as! StudentTicket )
+            
+        }else{
+            switch  selectedCellID {
+            case cellIdName.cell1.rawValue:
+                cell.textLabel?.text = provincesList[row]
+            case cellIdName.cell2.rawValue:
+                cell.textLabel?.text = collegeList[row]
+            case cellIdName.cell3.rawValue:
+                cell.textLabel?.text = courseList[row]
+            case cellIdName.cell4.rawValue:
+                cell.textLabel?.text = gradeList[row]
+            case cellIdName.cell7.rawValue:
+                cell.textLabel?.text = receiverList[row]
+                if indexPath.row == 0{
+                    cell.textLabel?.font = UIFont(name: "Btraffic", size: 20)
+                }
+            default:
+                return DataEntryVCItemsCell()
             }
-        default:
-            return DataEntryVCItemsCell()
         }
-        //DataEntryVCItemsCell()
-        
         return cell
     }
-    
-    
+
     
 }//extension
 
@@ -86,6 +87,14 @@ extension DataEntryViewController : UITableViewDelegate {
         }
         tableView.deselectRow(at: indexPath, animated: true)
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if userType != nil {
+            return 140.0
+        }else{
+            return 44.0
+        }
     }
 
     

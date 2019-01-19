@@ -22,12 +22,14 @@ class DataEntryViewController: UIViewController {
     var studentTickes:[Any] = []
     weak var delegate:DataEntryDelegate?
     static var province:String?
+    var imageData:Data?
     private var provinceReader:ProvinceReader!
     private var collegListReader:CollegeListReader!
     private var courseListReader:CourseListReader!
     private var gradListReader:GradeListReader!
     private var receiverListReader:ReceiverListReader!
     private let dataStore = Backendless.sharedInstance()?.data.of(Students.ofClass())
+    private var imagePicker:UIImagePickerController!
     
     //MARK: - UI Element
     
@@ -92,17 +94,25 @@ class DataEntryViewController: UIViewController {
         return btn
     }()
     
+    var selectAttachmentButton:UIButton = {
+        let btn = UIButton()
+        btn.setImage(#imageLiteral(resourceName: "add-media"), for: .normal)
+        btn.imageView?.tintColor = #colorLiteral(red: 0.1146069989, green: 0.3011208177, blue: 0.9670061469, alpha: 1)
+        btn.imageEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+        return btn
+    }()
+    
     //MARK: - Overridden Method
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+       
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-    
     
     //MARK: - Helper Method
     private func setupView() {
@@ -112,8 +122,17 @@ class DataEntryViewController: UIViewController {
         if userType != nil{
             titleLabel.text = "لیست تیکت ها"
             autoLayoutForUITableView()
-            studentTickes = dataStore?.find() as! [Dictionary<String,Any>]
-            print(studentTickes)
+            
+            let sortQuery = DataQueryBuilder()
+            sortQuery!.setSortBy(["created DESC"])
+            
+            dataStore?.find(sortQuery, response: { (tickets:[Any]?) in
+                let ticket = tickets as! [Dictionary<String,AnyObject>]
+                self.studentTickes = StudentTicket.parseStudentTicket(ticket)
+                self.tableViewItems.reloadData()
+            }, error: { (fault) in
+                print("Fault:\(fault.debugDescription)")
+            })
         }else{
             if let cellID = selectedCellID {
                 setupViewBasedOnCellId(cellID: cellID)
@@ -125,6 +144,7 @@ class DataEntryViewController: UIViewController {
     
     private func setupActionForButton() {
         confirmButton.addTarget(self, action: #selector(handelConfirmAction(_:)), for: .touchUpInside)
+        selectAttachmentButton.addTarget(self, action: #selector(handleAttachmentButton(_:)), for: .touchUpInside)
     }
     
     private func setupViewBasedOnCellId(cellID:String){
@@ -174,8 +194,18 @@ class DataEntryViewController: UIViewController {
         tableViewItems.register(DataEntryVCItemsCell.self, forCellReuseIdentifier: "itemsCell")
         tableViewItems.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableViewItems.tableFooterView = UIView()
-    
     }//func
+    
+    
+    @objc private func handleAttachmentButton(_ button:UIButton) {
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        DispatchQueue.main.async {
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }
+    }
     
     @objc private func handelConfirmAction(_ btn:UIButton){
         if selectedCellID == cellIdName.cell5.rawValue {
@@ -207,7 +237,7 @@ class DataEntryViewController: UIViewController {
         }else if selectedCellID == cellIdName.cell8.rawValue{
             let comment = ticketTextView.text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             if comment != "" && !(comment.isEmpty) && comment != "متن پیام خود را اینجا وارد کنید"{
-                delegate?.getCommentAndAttachment(comment: comment)
+                delegate?.getCommentAndAttachment(comment: comment, imageData: imageData)
                 self.dismiss(animated: true, completion: nil)
             }else{
                 TVUAlertView.showAlert(title: "خطا", message: "لطفا مقادیر لازم را وارد کنید", vc: self, btnText: "باشه")

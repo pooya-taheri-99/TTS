@@ -55,9 +55,10 @@ extension MainViewController : DataEntryDelegate {
         }
     }
     
-    func getCommentAndAttachment(comment: String?) {
-        if let comment = comment {
+    func getCommentAndAttachment(comment: String?,imageData:Data?) {
+        if let comment = comment , let image = imageData{
             students.st_comment = comment
+            self.imageData = image
         }
     }
     

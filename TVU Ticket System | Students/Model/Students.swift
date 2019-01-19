@@ -9,7 +9,7 @@
 import UIKit
 
 @objcMembers
-class Students : NSObject{
+class Students:NSObject{
     var st_fullname:String?
     var st_ID:String?
     var st_province:String?
@@ -18,4 +18,5 @@ class Students : NSObject{
     var st_course:String?
     var st_grade:String?
     var st_receiverName:String?
+    var st_image:Data?
 }

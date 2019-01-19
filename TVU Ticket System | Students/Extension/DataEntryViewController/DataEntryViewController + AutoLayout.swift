@@ -45,7 +45,10 @@ extension DataEntryViewController {
         autoLayoutForCardView()
         titleLabel.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, trailing: cardView.trailingAnchor, bottom: nil, height: 30, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 42, left: 16, bottom: 0, right: 16))
         cardView.addSubview(ticketTextView)
+        cardView.addSubview(selectAttachmentButton)
         ticketTextView.anchor(top: titleLabel.bottomAnchor, leading: cardView.leadingAnchor, trailing: cardView.trailingAnchor, bottom: nil, height: 200, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 42, left: 16, bottom: 0, right: 16))
+        selectAttachmentButton.anchor(top: ticketTextView.bottomAnchor, leading: ticketTextView.leadingAnchor, trailing: nil, bottom: nil, height: 50, width: 50, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0))
+        
         autoLayoutForConfirmButton()
     }
     

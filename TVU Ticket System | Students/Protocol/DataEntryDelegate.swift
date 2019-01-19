@@ -17,5 +17,5 @@ protocol DataEntryDelegate:class {
     func getFullName(fullName:String?)
     func getStudentId(id:String?)
     func receiverSelected(receiverName:String?)
-    func getCommentAndAttachment(comment:String?)
+    func getCommentAndAttachment(comment:String?,imageData:Data?)
 }

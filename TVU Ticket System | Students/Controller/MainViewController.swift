@@ -31,6 +31,7 @@ class MainViewController: UIViewController {
     let students = Students()
     let backendless = Backendless.sharedInstance()
     private var activityIndicator:UIActivityIndicatorView!
+    var imageData:Data?
     
     //MARK: - Computed Properties
     
@@ -142,7 +143,7 @@ class MainViewController: UIViewController {
     
     private func saveDataToBackendlessDataBase(){
         startActivityIndicator()
-        let dataStore = Backendless.sharedInstance()?.data.of(Students().ofClass())
+        let dataStore = backendless?.data.of(Students().ofClass())
         dataStore?.save(self.students, response: { [unowned self] (_) in
             DispatchQueue.main.async {[unowned self] in
                 self.deleteStudentData(student: self.students)
@@ -151,8 +152,18 @@ class MainViewController: UIViewController {
                 self.stopActivityIndicator()
                 TVUAlertView.showAlert(title: "پیغام", message: "تیکت شما با موفقیت ذخیره شد!", vc: self, btnText: "تایید")
             }
+            self.uploadImage()
         }, error: { (f) in
             print(f?.detail ?? "")
+        })
+    }
+    
+    private func uploadImage(){
+        let randomFileName = UUID().uuidString
+        backendless?.file.uploadFile("images/" + randomFileName + ".jpg", content: imageData, response: { (_) in
+            print("file uploaded successfully")
+        }, error: { (fault) in
+            print("Fault : \(fault.debugDescription)")
         })
     }
     
@@ -165,6 +176,7 @@ class MainViewController: UIViewController {
         student.st_grade = nil
         student.st_province = nil
         student.st_receiverName = nil
+        imageData = nil
     }
     
     private func startActivityIndicator(){
