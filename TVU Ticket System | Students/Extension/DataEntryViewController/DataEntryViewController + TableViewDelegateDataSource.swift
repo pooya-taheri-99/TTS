@@ -71,7 +71,11 @@ extension DataEntryViewController : UITableViewDelegate {
         let row = indexPath.row
         
         if userType != nil{
-            print("SlectedRow : \(row)")
+            let managerDetailViewController = ManagerDetailViewController()
+            let ticket = studentTickes as! [StudentTicket]
+            let objectId = ticket[row].st_ObejctID
+            managerDetailViewController.objectID = objectId
+            self.present(managerDetailViewController, animated: true, completion: nil)
         } else {
            
             if selectedCellID == cellIdName.cell1.rawValue{

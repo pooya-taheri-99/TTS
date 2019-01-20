@@ -3,13 +3,40 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "DataEntryViewController.setupViewBasedOnCellId(cellID:):DataEntryViewController.swift">
+         contextName = "closure #1 in ManagerDetailViewController.retreiveTicketByID():ManagerDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "receiverList">
+               value = "self.studentTicket">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainViewController.tableView(_:cellForRowAt:):MainViewController + TableView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "students.st_province">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ManagerDetailViewController.tableView(_:cellForRowAt:):ManagerDetailViewController + TableViewDataSourceDelegate.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "studentTicket">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ManagerDetailViewController.downloadImage(ticket:):ManagerDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "imagesRoute">
             </PersistentString>
             <PersistentString
-               value = "courseList">
+               value = "ticket.st_fileName!">
+            </PersistentString>
+            <PersistentString
+               value = "completeImageRoute">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -33,10 +60,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MainViewController.tableView(_:cellForRowAt:):MainViewController + TableView.swift">
+         contextName = "DataEntryViewController.setupViewBasedOnCellId(cellID:):DataEntryViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "students.st_province">
+               value = "receiverList">
+            </PersistentString>
+            <PersistentString
+               value = "courseList">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ManagerDetailViewController.retreiveTicketByID():ManagerDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "objectID">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

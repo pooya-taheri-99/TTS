@@ -53,7 +53,7 @@ class DataEntryVCItemsCell : UITableViewCell {
     
     func configureCellForUserType(ticket:StudentTicket){
         autoLayoutForStackView()
-        studentNameLabel.text = ticket.st_name
+        studentNameLabel.text = ticket.st_fullName
         studentIdLabel.text = ticket.st_id
     }
     

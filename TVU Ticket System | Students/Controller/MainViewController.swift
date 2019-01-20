@@ -92,12 +92,15 @@ class MainViewController: UIViewController {
     
     //MARK: - Helper Method
     
+    
+    //primary view setup
     private func setupView() {
         view.backgroundColor = .white
         setupTableView()
         autoLayoutForMainViewController()
     }
 
+    //setup tableView
     private func setupTableView() {
         tableViewItems.delegate = self
         tableViewItems.dataSource = self
@@ -105,6 +108,8 @@ class MainViewController: UIViewController {
         items = MainVCItemsModel.loadItems()
     }
     
+    
+    //show DataEntryViewController based on which tableview cell is tapped
     func dataEntryVCFunctions(cellID:String) {
         if cellID == cellIdName.cell1.rawValue {
             showDataEntryVC(cellID: cellID)
@@ -132,6 +137,7 @@ class MainViewController: UIViewController {
 
     }//func
     
+    //show EntryViewController
     private func showDataEntryVC(cellID:String) {
         DispatchQueue.main.async { [unowned self] in
             self.dataEntryVC = DataEntryViewController()
@@ -180,6 +186,7 @@ class MainViewController: UIViewController {
         })
     }//func
     
+    //delete all instance propeties of 'Student' object
     private func deleteStudentData(student:Students){
         student.st_college = nil
         student.st_comment = nil
@@ -192,6 +199,7 @@ class MainViewController: UIViewController {
         imageData = nil
     }
     
+    //show activity indicator
     private func startActivityIndicator(){
         activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
         activityIndicator.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
@@ -203,16 +211,19 @@ class MainViewController: UIViewController {
         activityIndicator.startAnimating()
     }
     
+    //hide activity indicator
     private func stopActivityIndicator(){
         if activityIndicator.isAnimating {
             activityIndicator.stopAnimating()
         }
     }
     
+    //setup action for buttons
     private func setupButtonsAction(){
         sendButton.addTarget(self, action: #selector(handleSendButton(_:)), for: .touchUpInside)
     }
     
+    //called when sendButton pressed
     @objc private func handleSendButton(_ button:UIButton) {
         saveDataToBackendlessDataBase()
     }

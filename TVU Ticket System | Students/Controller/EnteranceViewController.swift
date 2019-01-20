@@ -42,7 +42,9 @@ class EnteranceViewController:UIViewController {
     
     //MARK: - Helper Method
     
-   private func setupView() {
+    
+    //setup primary view
+    private func setupView() {
         view.backgroundColor = UIColor.white
         autoLayoutForEnteranceVC()
         setupTableView()
@@ -50,6 +52,7 @@ class EnteranceViewController:UIViewController {
         userTypes = userTypeReader.readUserType()
     }
     
+    //setup tableview
     private func setupTableView(){
         tableViewUserType.delegate = self
         tableViewUserType.dataSource = self

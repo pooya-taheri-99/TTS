@@ -12,6 +12,10 @@
 		E2025A9921E1453D00948D54 /* CourseList.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2025A9821E1453D00948D54 /* CourseList.plist */; };
 		E2025A9B21E145EC00948D54 /* CourseListReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2025A9A21E145EC00948D54 /* CourseListReader.swift */; };
 		E2025A9E21E1483000948D54 /* DataEntryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2025A9D21E1483000948D54 /* DataEntryDelegate.swift */; };
+		E2110EA621F42BDB008DAEFA /* ManagerDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2110EA521F42BDB008DAEFA /* ManagerDetailInfoView.swift */; };
+		E2110EA821F42BDB008DAEFA /* ManagerDetailedInfoGeneralStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2110EA721F42BDB008DAEFA /* ManagerDetailedInfoGeneralStackView.swift */; };
+		E2110EAA21F42BDB008DAEFA /* GeneralLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2110EA921F42BDB008DAEFA /* GeneralLabel.swift */; };
+		E2110EAC21F4489E008DAEFA /* ManagerDetailViewController + AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2110EAB21F4489E008DAEFA /* ManagerDetailViewController + AutoLayout.swift */; };
 		E227D07B21DDE61200171925 /* DataEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E227D07A21DDE61200171925 /* DataEntryViewController.swift */; };
 		E227D07D21DDF9C100171925 /* MainViewController + TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E227D07C21DDF9C100171925 /* MainViewController + TableView.swift */; };
 		E227D08221DE063500171925 /* DataEntryViewController + AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E227D08121DE063500171925 /* DataEntryViewController + AutoLayout.swift */; };
@@ -62,6 +66,10 @@
 		E2025A9821E1453D00948D54 /* CourseList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CourseList.plist; sourceTree = "<group>"; };
 		E2025A9A21E145EC00948D54 /* CourseListReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListReader.swift; sourceTree = "<group>"; };
 		E2025A9D21E1483000948D54 /* DataEntryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryDelegate.swift; sourceTree = "<group>"; };
+		E2110EA521F42BDB008DAEFA /* ManagerDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDetailInfoView.swift; sourceTree = "<group>"; };
+		E2110EA721F42BDB008DAEFA /* ManagerDetailedInfoGeneralStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDetailedInfoGeneralStackView.swift; sourceTree = "<group>"; };
+		E2110EA921F42BDB008DAEFA /* GeneralLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralLabel.swift; sourceTree = "<group>"; };
+		E2110EAB21F4489E008DAEFA /* ManagerDetailViewController + AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManagerDetailViewController + AutoLayout.swift"; sourceTree = "<group>"; };
 		E227D07A21DDE61200171925 /* DataEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryViewController.swift; sourceTree = "<group>"; };
 		E227D07C21DDF9C100171925 /* MainViewController + TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController + TableView.swift"; sourceTree = "<group>"; };
 		E227D08121DE063500171925 /* DataEntryViewController + AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataEntryViewController + AutoLayout.swift"; sourceTree = "<group>"; };
@@ -143,6 +151,14 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		E2110EA421F4293E008DAEFA /* ManagerDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E2110EAB21F4489E008DAEFA /* ManagerDetailViewController + AutoLayout.swift */,
+			);
+			path = ManagerDetailViewController;
+			sourceTree = "<group>";
+		};
 		E227D07E21DE049A00171925 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,8 +208,11 @@
 				E2F41E9621DC078A00658528 /* CustomTextView.swift */,
 				E2E54ADF21E7B5EA00857A5A /* DataEntry-ItemsCell.swift */,
 				E292510D21EDDB9F0047C2C0 /* EnteranceVC-Cell.swift */,
+				E2110EA921F42BDB008DAEFA /* GeneralLabel.swift */,
 				E2568DFD21DCF4830010AB64 /* GeneralTableView.swift */,
 				E2568DFF21DCF9B90010AB64 /* GeneralTableViewCell.swift */,
+				E2110EA721F42BDB008DAEFA /* ManagerDetailedInfoGeneralStackView.swift */,
+				E2110EA521F42BDB008DAEFA /* ManagerDetailInfoView.swift */,
 				E2025A9621E140AB00948D54 /* TVUAlertView.swift */,
 			);
 			path = View;
@@ -228,6 +247,7 @@
 		E2568DF821DCEADE0010AB64 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E2110EA421F4293E008DAEFA /* ManagerDetailViewController */,
 				E292510421EDA12A0047C2C0 /* EnteranceViewController */,
 				E227D08021DE04BD00171925 /* DataEntryViewController */,
 				E227D07E21DE049A00171925 /* MainViewController */,
@@ -448,6 +468,8 @@
 				E227D08221DE063500171925 /* DataEntryViewController + AutoLayout.swift in Sources */,
 				E2568DFA21DCEAF40010AB64 /* UIView-Extension.swift in Sources */,
 				E227D07D21DDF9C100171925 /* MainViewController + TableView.swift in Sources */,
+				E2110EA821F42BDB008DAEFA /* ManagerDetailedInfoGeneralStackView.swift in Sources */,
+				E2110EAA21F42BDB008DAEFA /* GeneralLabel.swift in Sources */,
 				E2025A9B21E145EC00948D54 /* CourseListReader.swift in Sources */,
 				E292510621EDA1740047C2C0 /* EnteranceViewController + AutoLayout.swift in Sources */,
 				E2E54AE021E7B5EA00857A5A /* DataEntry-ItemsCell.swift in Sources */,
@@ -460,8 +482,10 @@
 				E2BEB2B621E3C64C00CD4349 /* Students.swift in Sources */,
 				E292510A21EDD77E0047C2C0 /* UserTypeReader.swift in Sources */,
 				E2BEB2B421E3C59300CD4349 /* MainViewController + DataEntryDelegate.swift in Sources */,
+				E2110EAC21F4489E008DAEFA /* ManagerDetailViewController + AutoLayout.swift in Sources */,
 				E2568DFC21DCECAE0010AB64 /* MainViewController + AutoLayout.swift in Sources */,
 				E25E803921F33C3200E59D36 /* ManagerDetailViewController.swift in Sources */,
+				E2110EA621F42BDB008DAEFA /* ManagerDetailInfoView.swift in Sources */,
 				E2D0C86D21F07BBE001684E8 /* DataEntryViewController  + ImagePickerControllerDelegate.swift in Sources */,
 				E2F41E9521DBFE3800658528 /* CustomTextField.swift in Sources */,
 			);

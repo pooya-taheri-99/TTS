@@ -15,12 +15,20 @@ class GeneralTableViewCell: UITableViewCell {
     let cellReuseID = "ItemsCell"
     var cellID:String = ""
     
+    var isMainViewController:Bool = true {
+        didSet{
+            if isMainViewController {
+                
+            }else{
+                setupCellAppearance()
+            }
+        }
+    }
+    
     //MARK: - UI Elements
     
-    var cardView:CardView = {
-        let cView = CardView()
-        return cView
-    }()
+    var managerDetailInfoView = ManagerDetailInfoView()
+    var cardView = CardView()
     
     var itemsLabel:UILabel = {
         let label = UILabel()
@@ -30,6 +38,8 @@ class GeneralTableViewCell: UITableViewCell {
         label.text = "متن تست"
         return label
     }()
+    
+    
     
     var subTitleLabel:UILabel = {
         let label = UILabel()
@@ -63,6 +73,11 @@ class GeneralTableViewCell: UITableViewCell {
         autoLayoutForMainVCItemsCell()
     }
     
+    private func setupCellAppearance(){
+        autoLayoutForManagersCell()
+    }
+    
+    
     func configureCell(itemsString:String,student:Students) {
         self.itemsLabel.text = itemsString
         switch cellID {
@@ -86,6 +101,7 @@ class GeneralTableViewCell: UITableViewCell {
             break
         }
     }
+    
     
     
 }//class

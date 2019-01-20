@@ -6,7 +6,19 @@
 //  Copyright © 2019 Pooya Taheri. All rights reserved.
 //
 
+//************************************************************************************************************************
+//*
+//AutoLayout stuff are in : Extesnion -> DataEntryViewController -> DataEntryViewController + AutoLayout.swift
+//*
+//TableView Delegate and DataSource are in :  Extesnion -> DataEntryViewController -> DataEntryViewController + TableViewDelegateDataSource.swift
+//*
+//ImagePickerControllerDelegate and UINavigationControllerDelegate are in : Extesnion -> DataEntryViewController -> DataEntryViewController + ImagePickerControllerDelegate.swift
+//*
+//************************************************************************************************************************
+
+
 import UIKit
+
 
 class DataEntryViewController: UIViewController {
 
@@ -115,6 +127,8 @@ class DataEntryViewController: UIViewController {
     }
     
     //MARK: - Helper Method
+    
+    //primary view setup
     private func setupView() {
         view.backgroundColor = UIColor.white
         setupTableView()
@@ -128,7 +142,7 @@ class DataEntryViewController: UIViewController {
             
             dataStore?.find(sortQuery, response: { (tickets:[Any]?) in
                 let ticket = tickets as! [Dictionary<String,AnyObject>]
-                self.studentTickes = StudentTicket.parseStudentTicket(ticket)
+                self.studentTickes = StudentTicket.basicParsingStudentTicket(ticket)
                 self.tableViewItems.reloadData()
             }, error: { (fault) in
                 print("Fault:\(fault.debugDescription)")
@@ -142,11 +156,14 @@ class DataEntryViewController: UIViewController {
         
     }//func
     
+    //setup actions for buttons in the DataEntryViewController
     private func setupActionForButton() {
         confirmButton.addTarget(self, action: #selector(handelConfirmAction(_:)), for: .touchUpInside)
         selectAttachmentButton.addTarget(self, action: #selector(handleAttachmentButton(_:)), for: .touchUpInside)
     }
     
+    
+    //setup primary view based on which tableview cell is selected from MainViewController
     private func setupViewBasedOnCellId(cellID:String){
         if cellID == cellIdName.cell1.rawValue {
             titleLabel.text = "انتخاب استان"
