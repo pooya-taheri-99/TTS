@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainVCItemsCell: UITableViewCell {
+class GeneralTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
@@ -46,7 +46,8 @@ class MainVCItemsCell: UITableViewCell {
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .default, reuseIdentifier: cellReuseID)
+        super.init(style: .default, reuseIdentifier: reuseIdentifier)
+        textLabel?.font = UIFont(name: "BTraffic", size: 25.0)
         setupView()
     }
     

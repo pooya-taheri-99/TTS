@@ -18,5 +18,5 @@ class Students:NSObject{
     var st_course:String?
     var st_grade:String?
     var st_receiverName:String?
-    var st_image:Data?
+    var st_fileName:String?
 }

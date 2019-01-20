@@ -26,9 +26,11 @@ extension DataEntryViewController : UITableViewDataSource {
                 return receiverList.count
             default:
                 return 0
-            }
-        }
-    }
+            }//switch
+            
+        }//else
+    
+    }//func
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemsCell", for: indexPath) as! DataEntryVCItemsCell
@@ -55,11 +57,11 @@ extension DataEntryViewController : UITableViewDataSource {
             default:
                 return DataEntryVCItemsCell()
             }
-        }
+            
+        }//func
         return cell
-    }
+    }//func
 
-    
 }//extension
 
 
@@ -67,28 +69,36 @@ extension DataEntryViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
-        if selectedCellID == cellIdName.cell1.rawValue{
-            DataEntryViewController.province = provincesList[row]
-            if let province = DataEntryViewController.province {
-                delegate?.provinceSelected(provinceName: province)
+        
+        if userType != nil{
+            print("SlectedRow : \(row)")
+        } else {
+           
+            if selectedCellID == cellIdName.cell1.rawValue{
+                DataEntryViewController.province = provincesList[row]
+                if let province = DataEntryViewController.province {
+                    delegate?.provinceSelected(provinceName: province)
+                }
+            }else if selectedCellID == cellIdName.cell2.rawValue {
+                let college = collegeList[row]
+                delegate?.collegeSelected(collegeName:college)
+            }else if selectedCellID == cellIdName.cell3.rawValue {
+                let course = courseList[row]
+                delegate?.courseSelected(courseName: course)
+            }else if selectedCellID == cellIdName.cell4.rawValue {
+                let grade = gradeList[row]
+                delegate?.gradeSelected(gradeName: grade)
+            }else if selectedCellID == cellIdName.cell7.rawValue {
+                let receiver = receiverList[row]
+                delegate?.receiverSelected(receiverName: receiver)
             }
-        }else if selectedCellID == cellIdName.cell2.rawValue {
-            let college = collegeList[row]
-            delegate?.collegeSelected(collegeName:college)
-        }else if selectedCellID == cellIdName.cell3.rawValue {
-            let course = courseList[row]
-            delegate?.courseSelected(courseName: course)
-        }else if selectedCellID == cellIdName.cell4.rawValue {
-            let grade = gradeList[row]
-            delegate?.gradeSelected(gradeName: grade)
-        }else if selectedCellID == cellIdName.cell7.rawValue {
-            let receiver = receiverList[row]
-            delegate?.receiverSelected(receiverName: receiver)
-        }
+            self.dismiss(animated: true, completion: nil)
+        
+        }//else
         tableView.deselectRow(at: indexPath, animated: true)
-        self.dismiss(animated: true, completion: nil)
-    }
-    
+    }//func
+        
+       
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if userType != nil {
             return 140.0

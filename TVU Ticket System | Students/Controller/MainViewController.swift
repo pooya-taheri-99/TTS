@@ -64,8 +64,8 @@ class MainViewController: UIViewController {
         return btn
     }()
     
-    var tableViewItems:MainVCTableView = {
-        let tableView = MainVCTableView()
+    var tableViewItems:GeneralTableView = {
+        let tableView = GeneralTableView()
         return tableView
     }()
     
@@ -80,13 +80,6 @@ class MainViewController: UIViewController {
         view.endEditing(true)
     }
     
-    //MARK: - Helper Method
-    
-    private func setupView() {
-        view.backgroundColor = .white
-        setupTableView()
-        autoLayoutForMainViewController()
-    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tableViewItems.reloadData()
@@ -95,9 +88,15 @@ class MainViewController: UIViewController {
             sendButton.isEnabled = true
             setupButtonsAction()
         }
-        
     }
     
+    //MARK: - Helper Method
+    
+    private func setupView() {
+        view.backgroundColor = .white
+        setupTableView()
+        autoLayoutForMainViewController()
+    }
 
     private func setupTableView() {
         tableViewItems.delegate = self
@@ -130,7 +129,8 @@ class MainViewController: UIViewController {
         }else if cellID ==  cellIdName.cell8.rawValue {
             showDataEntryVC(cellID: cellID)
         }
-    }
+
+    }//func
     
     private func showDataEntryVC(cellID:String) {
         DispatchQueue.main.async { [unowned self] in
@@ -139,10 +139,14 @@ class MainViewController: UIViewController {
             self.dataEntryVC.delegate = self
             self.present(self.dataEntryVC, animated: true, completion: nil)
         }
-    }
+        
+    }//func
     
+    
+    //Save data to backendless database
     private func saveDataToBackendlessDataBase(){
         startActivityIndicator()
+        self.uploadImage()
         let dataStore = backendless?.data.of(Students().ofClass())
         dataStore?.save(self.students, response: { [unowned self] (_) in
             DispatchQueue.main.async {[unowned self] in
@@ -152,20 +156,29 @@ class MainViewController: UIViewController {
                 self.stopActivityIndicator()
                 TVUAlertView.showAlert(title: "پیغام", message: "تیکت شما با موفقیت ذخیره شد!", vc: self, btnText: "تایید")
             }
-            self.uploadImage()
-        }, error: { (f) in
-            print(f?.detail ?? "")
+        }, error: { (fault) in
+            DispatchQueue.main.async {
+                TVUAlertView.showAlert(title:"خطا" , message: "خطا در ذخیره اطلاعات", vc: self, btnText: "تایید")
+            }
         })
-    }
+        
+    }//func
     
+    
+    //upload image to backendless storage
     private func uploadImage(){
         let randomFileName = UUID().uuidString
+        students.st_fileName = randomFileName
         backendless?.file.uploadFile("images/" + randomFileName + ".jpg", content: imageData, response: { (_) in
-            print("file uploaded successfully")
+            DispatchQueue.main.async {
+                TVUAlertView.showAlert(title: "پیغام", message: "عکس با موفقیت آپلود شد", vc: self, btnText: "تایید")
+            }
         }, error: { (fault) in
-            print("Fault : \(fault.debugDescription)")
+            DispatchQueue.main.async {
+                TVUAlertView.showAlert(title: "خطا", message: "خطا در آپلود فایل", vc: self, btnText: "تایید")
+            }
         })
-    }
+    }//func
     
     private func deleteStudentData(student:Students){
         student.st_college = nil
@@ -204,6 +217,4 @@ class MainViewController: UIViewController {
         saveDataToBackendlessDataBase()
     }
    
-    
 }//class
-

@@ -22,13 +22,14 @@
 		E24019B121E85BFB008399C9 /* ReciverListReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24019B021E85BFB008399C9 /* ReciverListReader.swift */; };
 		E2568DFA21DCEAF40010AB64 /* UIView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568DF921DCEAF40010AB64 /* UIView-Extension.swift */; };
 		E2568DFC21DCECAE0010AB64 /* MainViewController + AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568DFB21DCECAE0010AB64 /* MainViewController + AutoLayout.swift */; };
-		E2568DFE21DCF4830010AB64 /* MainVC-TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568DFD21DCF4830010AB64 /* MainVC-TableView.swift */; };
-		E2568E0021DCF9B90010AB64 /* MainVC-ItemsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568DFF21DCF9B90010AB64 /* MainVC-ItemsCell.swift */; };
+		E2568DFE21DCF4830010AB64 /* GeneralTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568DFD21DCF4830010AB64 /* GeneralTableView.swift */; };
+		E2568E0021DCF9B90010AB64 /* GeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568DFF21DCF9B90010AB64 /* GeneralTableViewCell.swift */; };
 		E2568E0221DCFA720010AB64 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568E0121DCFA720010AB64 /* CustomImageView.swift */; };
 		E2568E0421DCFCE80010AB64 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568E0321DCFCE80010AB64 /* CardView.swift */; };
 		E2568E0621DCFEFD0010AB64 /* MainViewController-ItemsCell + AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568E0521DCFEFD0010AB64 /* MainViewController-ItemsCell + AutoLayout.swift */; };
 		E2568E0821DD0C160010AB64 /* MainVC_Items.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2568E0721DD0C160010AB64 /* MainVC_Items.plist */; };
 		E2568E0A21DD0D360010AB64 /* MainVCItemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2568E0921DD0D360010AB64 /* MainVCItemsModel.swift */; };
+		E25E803921F33C3200E59D36 /* ManagerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E803821F33C3200E59D36 /* ManagerDetailViewController.swift */; };
 		E2647B1121E1286700491FD3 /* CollegeListReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2647B1021E1286700491FD3 /* CollegeListReader.swift */; };
 		E2647B1621E128CE00491FD3 /* TVU_CollegeList.json in Resources */ = {isa = PBXBuildFile; fileRef = E2647B1521E128CE00491FD3 /* TVU_CollegeList.json */; };
 		E292510321ED9DE40047C2C0 /* EnteranceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E292510221ED9DE40047C2C0 /* EnteranceViewController.swift */; };
@@ -71,13 +72,14 @@
 		E24019B021E85BFB008399C9 /* ReciverListReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReciverListReader.swift; sourceTree = "<group>"; };
 		E2568DF921DCEAF40010AB64 /* UIView-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Extension.swift"; sourceTree = "<group>"; };
 		E2568DFB21DCECAE0010AB64 /* MainViewController + AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController + AutoLayout.swift"; sourceTree = "<group>"; };
-		E2568DFD21DCF4830010AB64 /* MainVC-TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainVC-TableView.swift"; sourceTree = "<group>"; };
-		E2568DFF21DCF9B90010AB64 /* MainVC-ItemsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainVC-ItemsCell.swift"; sourceTree = "<group>"; };
+		E2568DFD21DCF4830010AB64 /* GeneralTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTableView.swift; sourceTree = "<group>"; };
+		E2568DFF21DCF9B90010AB64 /* GeneralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTableViewCell.swift; sourceTree = "<group>"; };
 		E2568E0121DCFA720010AB64 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		E2568E0321DCFCE80010AB64 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		E2568E0521DCFEFD0010AB64 /* MainViewController-ItemsCell + AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController-ItemsCell + AutoLayout.swift"; sourceTree = "<group>"; };
 		E2568E0721DD0C160010AB64 /* MainVC_Items.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MainVC_Items.plist; sourceTree = "<group>"; };
 		E2568E0921DD0D360010AB64 /* MainVCItemsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCItemsModel.swift; sourceTree = "<group>"; };
+		E25E803821F33C3200E59D36 /* ManagerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDetailViewController.swift; sourceTree = "<group>"; };
 		E2647B1021E1286700491FD3 /* CollegeListReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeListReader.swift; sourceTree = "<group>"; };
 		E2647B1521E128CE00491FD3 /* TVU_CollegeList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TVU_CollegeList.json; sourceTree = "<group>"; };
 		E292510221ED9DE40047C2C0 /* EnteranceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnteranceViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				E227D07A21DDE61200171925 /* DataEntryViewController.swift */,
 				E292510221ED9DE40047C2C0 /* EnteranceViewController.swift */,
 				E2F41E8221DBF4F900658528 /* MainViewController.swift */,
+				E25E803821F33C3200E59D36 /* ManagerDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -188,10 +191,10 @@
 				E2F41E9421DBFE3800658528 /* CustomTextField.swift */,
 				E2F41E9621DC078A00658528 /* CustomTextView.swift */,
 				E2E54ADF21E7B5EA00857A5A /* DataEntry-ItemsCell.swift */,
-				E2568DFF21DCF9B90010AB64 /* MainVC-ItemsCell.swift */,
-				E2568DFD21DCF4830010AB64 /* MainVC-TableView.swift */,
-				E2025A9621E140AB00948D54 /* TVUAlertView.swift */,
 				E292510D21EDDB9F0047C2C0 /* EnteranceVC-Cell.swift */,
+				E2568DFD21DCF4830010AB64 /* GeneralTableView.swift */,
+				E2568DFF21DCF9B90010AB64 /* GeneralTableViewCell.swift */,
+				E2025A9621E140AB00948D54 /* TVUAlertView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -448,16 +451,17 @@
 				E2025A9B21E145EC00948D54 /* CourseListReader.swift in Sources */,
 				E292510621EDA1740047C2C0 /* EnteranceViewController + AutoLayout.swift in Sources */,
 				E2E54AE021E7B5EA00857A5A /* DataEntry-ItemsCell.swift in Sources */,
-				E2568E0021DCF9B90010AB64 /* MainVC-ItemsCell.swift in Sources */,
+				E2568E0021DCF9B90010AB64 /* GeneralTableViewCell.swift in Sources */,
 				E292510321ED9DE40047C2C0 /* EnteranceViewController.swift in Sources */,
 				E2025A9721E140AB00948D54 /* TVUAlertView.swift in Sources */,
 				E227D08421DE1B3C00171925 /* DataEntryViewController + TableViewDelegateDataSource.swift in Sources */,
 				E2F3E14321EF8BEB00013A2A /* StudentTicket.swift in Sources */,
-				E2568DFE21DCF4830010AB64 /* MainVC-TableView.swift in Sources */,
+				E2568DFE21DCF4830010AB64 /* GeneralTableView.swift in Sources */,
 				E2BEB2B621E3C64C00CD4349 /* Students.swift in Sources */,
 				E292510A21EDD77E0047C2C0 /* UserTypeReader.swift in Sources */,
 				E2BEB2B421E3C59300CD4349 /* MainViewController + DataEntryDelegate.swift in Sources */,
 				E2568DFC21DCECAE0010AB64 /* MainViewController + AutoLayout.swift in Sources */,
+				E25E803921F33C3200E59D36 /* ManagerDetailViewController.swift in Sources */,
 				E2D0C86D21F07BBE001684E8 /* DataEntryViewController  + ImagePickerControllerDelegate.swift in Sources */,
 				E2F41E9521DBFE3800658528 /* CustomTextField.swift in Sources */,
 			);

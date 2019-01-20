@@ -9,7 +9,7 @@
 import UIKit
 
 
-extension MainVCItemsCell {
+extension GeneralTableViewCell {
     
     func autoLayoutForMainVCItemsCell() {
         contentView.addSubview(cardView)

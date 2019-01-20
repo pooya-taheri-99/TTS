@@ -14,12 +14,12 @@ extension DataEntryViewController : UIImagePickerControllerDelegate , UINavigati
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let picker = info[.originalImage] as? UIImage
         if let image = picker{
-            let imageData:Data = image.jpegData(compressionQuality: 0.6)!
+            let imageData:Data = image.jpegData(compressionQuality: 0.4)!
+            selectAttachmentButton.setImage(image, for: .normal)
             self.imageData = imageData
         }
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-}
+}//extesnsion
 

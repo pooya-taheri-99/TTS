@@ -20,8 +20,10 @@ extension EnteranceViewController:UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell =  tableView.dequeueReusableCell(withIdentifier: reuseCellID, for: indexPath) as? EnteranceVCItemsCell {
+        if let cell =  tableView.dequeueReusableCell(withIdentifier: reuseCellID, for: indexPath) as? GeneralTableViewCell {
             cell.textLabel?.text = userTypes[indexPath.row]
+            cell.textLabel?.textAlignment = .center
+            cell.cardView.isHidden = true
             return cell
         }
         return EnteranceVCItemsCell()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainVCTableView: UITableView {
+class GeneralTableView: UITableView {
     
     //MARK: - Properties
 
@@ -27,7 +27,7 @@ class MainVCTableView: UITableView {
     
     private func setupTableView(){
         self.separatorStyle = .none
-        self.register(MainVCItemsCell.self ,forCellReuseIdentifier: cellReuseID)
+        self.register(GeneralTableViewCell.self ,forCellReuseIdentifier: cellReuseID)
     }
     
 }//class
