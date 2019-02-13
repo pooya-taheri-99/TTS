@@ -15,39 +15,14 @@ class GeneralTableViewCell: UITableViewCell {
     let cellReuseID = "ItemsCell"
     var cellID:String = ""
     
-    var isMainViewController:Bool = true {
-        didSet{
-            if isMainViewController {
-                
-            }else{
-                setupCellAppearance()
-            }
-        }
-    }
+
     
     //MARK: - UI Elements
     
     var managerDetailInfoView = ManagerDetailInfoView()
     var cardView = CardView()
-    
-    var itemsLabel:UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont(name: "BTraffic", size: 24)
-        label.textColor = .darkGray
-        label.text = "متن تست"
-        return label
-    }()
-    
-    
-    
-    var subTitleLabel:UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont(name: "BTraffic", size: 16)
-        label.textColor = .lightGray
-        return label
-    }()
+    var itemsLabel = GeneralLabel(fontSize: 18, textAlignment: .center, textColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1))
+    var subTitleLabel = GeneralLabel(fontSize: 16, textAlignment: .center, textColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
     
     //MARK: - Overridden Method
     
@@ -69,15 +44,10 @@ class GeneralTableViewCell: UITableViewCell {
     
     private func setupView() {
         contentView.backgroundColor = .clear
-        self.selectionStyle = .none
+        self.selectionStyle  = .none
         autoLayoutForMainVCItemsCell()
     }
-    
-    private func setupCellAppearance(){
-        autoLayoutForManagersCell()
-    }
-    
-    
+
     func configureCell(itemsString:String,student:Students) {
         self.itemsLabel.text = itemsString
         switch cellID {
@@ -101,6 +71,7 @@ class GeneralTableViewCell: UITableViewCell {
             break
         }
     }
+    
     
     
     

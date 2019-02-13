@@ -34,16 +34,19 @@ class GeneralLabel:UILabel {
         super.init(frame: frame)
     }
     
-    init(fontSize:CGFloat,textAlignment:NSTextAlignment) {
+    init(fontSize:CGFloat,textAlignment:NSTextAlignment,textColor:UIColor? = .darkGray) {
         super.init(frame: .zero)
-        customizeLabel(fontSize: fontSize, textAlignment: textAlignment)
+        customizeLabel(fontSize: fontSize, textAlignment: textAlignment,textColor: textColor ?? .darkGray)
     }
     
-    private func customizeLabel(fontSize:CGFloat,textAlignment:NSTextAlignment) {
+    private func customizeLabel(fontSize:CGFloat,textAlignment:NSTextAlignment,textColor:UIColor? = .darkGray) {
         self.font = UIFont(name: "BTraffic", size:fontSize)
         self.textAlignment = textAlignment
         self.numberOfLines = 0
         self.minimumScaleFactor = 0.5
+        if let txtColor = textColor {
+            self.textColor = txtColor
+        }
         
     }
     

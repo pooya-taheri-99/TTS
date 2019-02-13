@@ -29,9 +29,17 @@ extension GeneralTableViewCell {
         subTitleLabel.anchor(top: itemsLabel.bottomAnchor, leading: cardView.leadingAnchor, trailing: cardView.trailingAnchor, bottom: cardView.bottomAnchor, height: nil, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16))
     }
     
+    
+    
     func autoLayoutForManagersCell(){
-        contentView.addSubview(managerDetailInfoView)
-        managerDetailInfoView.anchor(top: contentView.topAnchor, leading: contentView.leadingAnchor, trailing: contentView.trailingAnchor, bottom: contentView.bottomAnchor, height: nil, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
+        contentView.addSubview(cardView)
+        cardView.addSubview(managerDetailInfoView)
+        
+        //cardView
+        
+        cardView.anchor(top: contentView.topAnchor, leading: contentView.leadingAnchor, trailing: contentView.trailingAnchor, bottom: contentView.bottomAnchor, height: nil, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
+        
+        managerDetailInfoView.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, trailing: cardView.trailingAnchor, bottom: cardView.bottomAnchor, height: nil, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
     }
     
 }//extension

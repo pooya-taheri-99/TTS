@@ -25,4 +25,9 @@ extension MainViewController {
         
     }//func
     
+    func autoLayoutForCloseButton(){
+        view.addSubview(closeButton)
+        closeButton.anchor(top: view.topAnchor, leading: view.leadingAnchor, trailing: nil, bottom: nil, height: 25, width: 25, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 42, left: 16, bottom: 0, right: 0))
+    }
+    
 }//extension

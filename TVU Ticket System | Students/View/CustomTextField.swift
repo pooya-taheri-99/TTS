@@ -19,16 +19,17 @@ class CustomUITextField : UITextField {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.delegate = self
-        self.layer.borderWidth = 0.5
-        self.layer.borderColor = customLightGrayColor
-        self.layer.masksToBounds = false
-        self.layer.cornerRadius = 4.0
-        self.backgroundColor = .white
-        self.layer.shadowColor = UIColor.gray.withAlphaComponent(0.4).cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 3.0)
-        self.layer.shadowRadius = 3.0
-        self.layer.shadowOpacity = 1.0
+        customSetting()
+    }
+    
+    init(textAlignmnet:NSTextAlignment,placeHolder:String,keyboardType:UIKeyboardType? = .default) {
+        super.init(frame: .zero)
+        self.textAlignment = textAlignment
+        self.placeholder = placeHolder
+        if let keyBType = keyboardType {
+            self.keyboardType = keyBType
+        }
+        customSetting()
     }
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {
@@ -44,8 +45,20 @@ class CustomUITextField : UITextField {
     }
  
     
+    private func customSetting(){
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = customLightGrayColor
+        self.layer.masksToBounds = false
+        self.layer.cornerRadius = 4.0
+        self.backgroundColor = .white
+        self.layer.shadowColor = UIColor.gray.withAlphaComponent(0.4).cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        self.layer.shadowRadius = 3.0
+        self.layer.shadowOpacity = 1.0
+        self.font =  UIFont(name: Constants.BTrafficFont, size: Constants.normalFontSize)
+        self.textColor = .black
+    }
+    
 }//class
 
-extension CustomUITextField: UITextFieldDelegate {
-    
-}
+

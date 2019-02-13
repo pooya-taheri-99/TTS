@@ -15,15 +15,20 @@ extension DataEntryViewController : UITableViewDataSource {
         }else{
             switch  selectedCellID {
             case cellIdName.cell1.rawValue:
-                return provincesList.count
+                let provinceList = stringDictionaryCollection[CollectionNames.provinceList]
+                return provinceList?.count ?? 0
             case cellIdName.cell2.rawValue:
-                return collegeList.count
+                let collegeList = stringDictionaryCollection[CollectionNames.collegeList]
+                return collegeList?.count ?? 0
             case cellIdName.cell3.rawValue:
-                return courseList.count
+                let courseList = stringDictionaryCollection[CollectionNames.courseList]
+                return courseList?.count ?? 0
             case cellIdName.cell4.rawValue:
-                return gradeList.count
+                let gradeList = stringDictionaryCollection[CollectionNames.gradeList]
+                return gradeList?.count ?? 0
             case cellIdName.cell7.rawValue:
-                return receiverList.count
+                let receiverList = stringDictionaryCollection[CollectionNames.receiverList]
+                return receiverList?.count ?? 0
             default:
                 return 0
             }//switch
@@ -38,19 +43,20 @@ extension DataEntryViewController : UITableViewDataSource {
         if userType != nil{
             let ticket = studentTickes[row]
             cell.configureCellForUserType(ticket: ticket as! StudentTicket )
+            tableView.separatorStyle = .none
             
         }else{
             switch  selectedCellID {
             case cellIdName.cell1.rawValue:
-                cell.textLabel?.text = provincesList[row]
+                cell.textLabel?.text = stringDictionaryCollection[CollectionNames.provinceList]?[row]
             case cellIdName.cell2.rawValue:
-                cell.textLabel?.text = collegeList[row]
+                cell.textLabel?.text = stringDictionaryCollection[CollectionNames.collegeList]?[row]
             case cellIdName.cell3.rawValue:
-                cell.textLabel?.text = courseList[row]
+                cell.textLabel?.text = stringDictionaryCollection[CollectionNames.courseList]?[row]
             case cellIdName.cell4.rawValue:
-                cell.textLabel?.text = gradeList[row]
+                cell.textLabel?.text = stringDictionaryCollection[CollectionNames.gradeList]?[row]
             case cellIdName.cell7.rawValue:
-                cell.textLabel?.text = receiverList[row]
+                cell.textLabel?.text = stringDictionaryCollection[CollectionNames.receiverList]?[row]
                 if indexPath.row == 0{
                     cell.textLabel?.font = UIFont(name: "Btraffic", size: 20)
                 }
@@ -79,22 +85,32 @@ extension DataEntryViewController : UITableViewDelegate {
         } else {
            
             if selectedCellID == cellIdName.cell1.rawValue{
-                DataEntryViewController.province = provincesList[row]
-                if let province = DataEntryViewController.province {
-                    delegate?.provinceSelected(provinceName: province)
+                if let provinceName = stringDictionaryCollection[CollectionNames.provinceList] {
+                    DataEntryViewController.province = provinceName[row]
+                    if let province = DataEntryViewController.province {
+                        delegate?.provinceSelected(provinceName: province)
+                    }
                 }
             }else if selectedCellID == cellIdName.cell2.rawValue {
-                let college = collegeList[row]
-                delegate?.collegeSelected(collegeName:college)
+                if let collegeName = stringDictionaryCollection[CollectionNames.collegeList] {
+                    let collegeSelected = collegeName[row]
+                    delegate?.collegeSelected(collegeName:collegeSelected)
+                }
             }else if selectedCellID == cellIdName.cell3.rawValue {
-                let course = courseList[row]
-                delegate?.courseSelected(courseName: course)
+                if let courseList = stringDictionaryCollection[CollectionNames.courseList] {
+                    let course = courseList[row]
+                    delegate?.courseSelected(courseName: course)
+                }
             }else if selectedCellID == cellIdName.cell4.rawValue {
-                let grade = gradeList[row]
-                delegate?.gradeSelected(gradeName: grade)
+                if let gradeList = stringDictionaryCollection[CollectionNames.gradeList] {
+                    let grade = gradeList[row]
+                    delegate?.gradeSelected(gradeName: grade)
+                }
             }else if selectedCellID == cellIdName.cell7.rawValue {
-                let receiver = receiverList[row]
-                delegate?.receiverSelected(receiverName: receiver)
+                if let receiverList = stringDictionaryCollection[CollectionNames.receiverList] {
+                    let receiver = receiverList[row]
+                    delegate?.receiverSelected(receiverName: receiver)
+                }
             }
             self.dismiss(animated: true, completion: nil)
         

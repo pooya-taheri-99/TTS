@@ -10,21 +10,9 @@ import UIKit
 
 class DataEntryVCItemsCell : UITableViewCell {
     
-    var studentNameLabel:UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "BTraffic", size: 17)
-        label.textAlignment = .center
-        return label
-    }()
-    
-    
-    var studentIdLabel:UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "BTraffic", size: 17)
-        label.textAlignment = .center
-        return label
-    }()
-    
+    var studentNameLabel = GeneralLabel(fontSize: 15.0, textAlignment: .center, textColor: nil)
+    var studentIdLabel = GeneralLabel(fontSize: 15.0, textAlignment: .center, textColor: nil)
+    var cardView = CardView()
     
     var stackViewLabels:UIStackView = {
         let stackView = UIStackView()
@@ -58,11 +46,15 @@ class DataEntryVCItemsCell : UITableViewCell {
     }
     
     func autoLayoutForStackView(){
-        contentView.addSubview(stackViewLabels)
+        contentView.addSubview(cardView)
+        cardView.addSubview(stackViewLabels)
         stackViewLabels.addArrangedSubview(studentNameLabel)
         stackViewLabels.addArrangedSubview(studentIdLabel)
         
-        stackViewLabels.anchor(top: contentView.topAnchor, leading: contentView.leadingAnchor, trailing: contentView.trailingAnchor, bottom: contentView.bottomAnchor, height: nil, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
+        cardView.anchor(top: contentView.topAnchor, leading: contentView.leadingAnchor, trailing: contentView.trailingAnchor, bottom: contentView.bottomAnchor, height: nil, width: nil
+            , XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
+        
+        stackViewLabels.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, trailing: cardView.trailingAnchor, bottom: cardView.bottomAnchor, height: nil, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
     }
     
-}
+}//class

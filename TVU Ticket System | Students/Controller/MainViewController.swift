@@ -69,6 +69,12 @@ class MainViewController: UIViewController {
         return tableView
     }()
     
+    var closeButton:UIButton = {
+        let btn = UIButton()
+        btn.setImage(#imageLiteral(resourceName: "close_btn"), for: .normal)
+        return btn
+    }()
+    
     //MARK: - Overridden Method
     
     override func viewDidLoad() {
@@ -98,6 +104,8 @@ class MainViewController: UIViewController {
         view.backgroundColor = .white
         setupTableView()
         autoLayoutForMainViewController()
+        autoLayoutForCloseButton()
+        closeButton.addTarget(self, action: #selector(handleCloseButton(_:)), for: .touchUpInside)
     }
 
     //setup tableView
@@ -228,4 +236,8 @@ class MainViewController: UIViewController {
         saveDataToBackendlessDataBase()
     }
    
+    //dismiss view controller
+    @objc private func handleCloseButton(_ button:UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
 }//class

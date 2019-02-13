@@ -18,7 +18,7 @@ extension DataEntryViewController {
     func autoLayoutForUITableView(){
         view.addSubview(tableViewItems)
         tableViewItems.anchor(top: titleLabel.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.bottomAnchor  , height: nil, width: nil
-            , XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 16))
+            , XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0))
     }
     
     func autoLayoutForTextFields(){
@@ -63,6 +63,11 @@ extension DataEntryViewController {
         view.addSubview(cardView)
         cardView.addSubview(titleLabel)
         cardView.anchor(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.bottomAnchor, height: nil, width: nil, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 32, left: 16, bottom: 16, right: 16))
+    }
+    
+    func autoLayoutForCloseButton(){
+        view.addSubview(closeButton)
+        closeButton.anchor(top: view.topAnchor, leading: view.leadingAnchor, trailing: nil, bottom: nil, height: 25, width: 25, XAxis: nil, YAxis: nil, padding: UIEdgeInsets(top: 42, left: 16, bottom: 0, right: 0))
     }
     
     

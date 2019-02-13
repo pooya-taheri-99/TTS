@@ -22,7 +22,6 @@ class CardView : UIView {
         setupCardViewEffect()
     }
     
-    
     private func setupCardViewEffect() {
         self.backgroundColor = .white
         self.layer.cornerRadius = 4.0

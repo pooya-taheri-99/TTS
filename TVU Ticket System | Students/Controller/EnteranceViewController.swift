@@ -18,10 +18,7 @@ class EnteranceViewController:UIViewController {
     
     //MARK: - UI Elements
     
-    var tableViewUserType:GeneralTableView = {
-        let tableView = GeneralTableView()
-        return tableView
-    }()
+    var tableViewUserType = GeneralTableView()
     
     var confirmButton:UIButton = {
         let btn = UIButton()
@@ -60,8 +57,5 @@ class EnteranceViewController:UIViewController {
         tableViewUserType.tableFooterView = UIView()
         tableViewUserType.isScrollEnabled = false
     }
-
-    
-    
-    
+  
 }//class

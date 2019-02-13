@@ -9,6 +9,7 @@
 import UIKit
 
 class CustomImageView : UIImageView {
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -17,6 +18,15 @@ class CustomImageView : UIImageView {
         super.init(frame: frame)
         self.layer.cornerRadius = 4.0
         self.clipsToBounds = true
+    }
+    
+    init(aspectRatio:UIView.ContentMode,backgroundColor:UIColor? = .clear,image:UIImage? = nil) {
+        super.init(frame: .zero)
+        self.contentMode = aspectRatio
+        if let bgColor = backgroundColor {
+            self.backgroundColor = bgColor
+        }
+        self.image = image
     }
     
 }//class

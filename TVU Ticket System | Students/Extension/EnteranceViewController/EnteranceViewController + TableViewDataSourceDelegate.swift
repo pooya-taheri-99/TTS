@@ -21,12 +21,11 @@ extension EnteranceViewController:UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell =  tableView.dequeueReusableCell(withIdentifier: reuseCellID, for: indexPath) as? GeneralTableViewCell {
-            cell.textLabel?.text = userTypes[indexPath.row]
-            cell.textLabel?.textAlignment = .center
-            cell.cardView.isHidden = true
+            cell.itemsLabel.text = userTypes[indexPath.row]
+            cell.itemsLabel.textAlignment = .center
             return cell
         }
-        return EnteranceVCItemsCell()
+        return GeneralTableViewCell()
     }
     
 }//extesnion
@@ -43,14 +42,19 @@ extension EnteranceViewController:UITableViewDelegate {
         switch selectedItem {
         case "دانشجو":
             let mainVC = MainViewController()
-            self.present(mainVC, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                self.present(mainVC, animated: true, completion: nil)
+            }
         case "مدیریت":
             let dataEnteryVC = DataEntryViewController()
             dataEnteryVC.userType = selectedItem
-            self.present(dataEnteryVC, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                self.present(dataEnteryVC, animated: true, completion: nil)
+            }
         default:
             break
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }//extension

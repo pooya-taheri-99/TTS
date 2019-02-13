@@ -12,22 +12,33 @@ import UIKit
 class ManagerDetailViewController:UIViewController {
     
     //MARK: - Instance Property
-    let imagesRoute = "https://backendlessappcontent.com/0189D3C3-383E-C1A2-FFD5-D9B7E21E6500/B9566F1A-EFF7-319C-FF27-091AD6829000/files/images/"
+    let imagesRoute = Constants.IMAGES_ROUTE
     var objectID:String?
     var studentTicket:StudentTicket = StudentTicket()
     let backendless = Backendless.sharedInstance()
     
     //MARK: - UI Elements
-    var attachmentImageView:UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .clear
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
     
     var activityIndicator:UIActivityIndicatorView!
     var detailedInfoView = ManagerDetailInfoView()
     var messageLabel:GeneralLabel = GeneralLabel(fontSize: 16.0, textAlignment: .right)
+    var scrollView = UIScrollView()
+    var contentView = UIView()
+    
+    
+    var confirmButton:GeneralUIButton = {
+        let btn = GeneralUIButton(title: "رسیدگی می شود", state: .normal, backgroundColor: #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1))
+        btn.hasCornerRadius = true
+        return btn
+    }()
+    
+    var attachmentImageView:CustomImageView = {
+        let imageView = CustomImageView(aspectRatio: UIView.ContentMode.scaleAspectFill, backgroundColor: .clear, image: nil)
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 4.0
+        return imageView
+    }()
+    
     
     //MARK: - Overridden Method
     
@@ -41,10 +52,12 @@ class ManagerDetailViewController:UIViewController {
     
     
     private func setupView(){
+    
         self.startActivityIndicator()
         view.backgroundColor = .white
         autoLayoutForManagerDetailVC()
         retreiveTicketByID()
+        setActionForButton()
     }
     
    
@@ -52,7 +65,7 @@ class ManagerDetailViewController:UIViewController {
     private func startActivityIndicator(){
         activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.transform = CGAffineTransform(scaleX: 1, y: 1)
+        activityIndicator.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         activityIndicator.layer.cornerRadius = 4.0
         attachmentImageView.addSubview(activityIndicator)
         activityIndicator.anchor(top: nil, leading: nil, trailing: nil, bottom: nil, height: 30, width: 30, XAxis: attachmentImageView.centerXAnchor, YAxis: attachmentImageView.centerYAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
@@ -66,6 +79,7 @@ class ManagerDetailViewController:UIViewController {
         }
     }
     
+    //retrieve data by objectId in database
     private func retreiveTicketByID(){
         let whereClause = "objectId = " + "'\(objectID!)'"
         let queryBuilder = DataQueryBuilder()
@@ -83,6 +97,7 @@ class ManagerDetailViewController:UIViewController {
         
     }
     
+    //configure view when data downloaded
     private func setupDetailedInfoView(ticket:StudentTicket) {
         let generalStackView = detailedInfoView.managerDetailedInfoGeneralSatckView
         DispatchQueue.main.async { [unowned self] in
@@ -100,9 +115,9 @@ class ManagerDetailViewController:UIViewController {
         
     }
     
-    func downloadImage(ticket:StudentTicket){
+    //download image from "imagesRoute" at the top
+    private func downloadImage(ticket:StudentTicket){
         let completeImageRoute = URL(string: "\(imagesRoute)\(ticket.st_fileName!).jpg")!
-        print("\(self.imagesRoute)\(ticket.st_fileName!).jpg")
         URLSession.shared.dataTask(with: completeImageRoute) { (data, response, error) in
             if let error = error {
                 print("Error:\(error.localizedDescription)")
@@ -110,7 +125,6 @@ class ManagerDetailViewController:UIViewController {
             
             if let data = data{
                 
-                print("Data:\(data)")
                 DispatchQueue.main.async { [unowned self] in
                     self.attachmentImageView.image = UIImage(data: data)
                     self.stopActivityIndicator()
@@ -120,5 +134,15 @@ class ManagerDetailViewController:UIViewController {
         }.resume()   //dataTask
         
     }//downloadImage
+    
+    
+    private func setActionForButton(){
+        confirmButton.addTarget(self, action: #selector(handleConfirmButton(_:)), for: .touchUpInside)
+    }
+    
+    //dismiss view controller
+    @objc private func handleConfirmButton(_ button:UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     
 }//class

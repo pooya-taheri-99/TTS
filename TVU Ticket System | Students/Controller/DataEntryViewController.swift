@@ -22,16 +22,26 @@ import UIKit
 
 class DataEntryViewController: UIViewController {
 
+    //CollectionNames for "stringDictionaryCollection" naming
+    struct CollectionNames {
+        static let provinceList = "provinceList"
+        static let collegeList = "collegeList"
+        static let courseList = "courseList"
+        static let gradeList = "gradeList"
+        static let receiverList = "receiverList"
+    }
+    
+    
     //MARK: - Properteis
     
     var selectedCellID:String?
     var userType:String?
-    var provincesList:[String] = []
-    var collegeList:[String] = []
-    var courseList:[String] = []
-    var gradeList:[String] = []
-    var receiverList:[String] = []
     var studentTickes:[Any] = []
+    var stringDictionaryCollection:[String:[String]] = [CollectionNames.provinceList:[],
+                                                        CollectionNames.collegeList:[],
+                                                        CollectionNames.courseList:[],
+                                                        CollectionNames.gradeList:[],
+                                                        CollectionNames.receiverList:[]]
     weak var delegate:DataEntryDelegate?
     static var province:String?
     var imageData:Data?
@@ -45,73 +55,43 @@ class DataEntryViewController: UIViewController {
     
     //MARK: - UI Element
     
-    var tableViewItems:UITableView = {
-        let tableView = UITableView()
-        return tableView
+    var tableViewItems = UITableView()
+    
+    var cardView = CardView()
+    
+    
+    
+    var ticketTextView = CustomTextView()
+    
+    var titleLabel = GeneralLabel(fontSize: Constants.bigFontSize, textAlignment: .center, textColor: .darkGray)
+    
+    var closeButton = GeneralUIButton(image: #imageLiteral(resourceName: "close_btn"))
+    
+    var confirmButton:GeneralUIButton = {
+        let btn = GeneralUIButton(title: "تایید", state: .normal, backgroundColor: #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1))
+        btn.hasCornerRadius = true
+        return btn
     }()
     
-    var cardView:CardView = {
-        let view = CardView()
-        return view
+    var selectAttachmentButton:GeneralUIButton = {
+        let btn = GeneralUIButton(image: #imageLiteral(resourceName: "add-media"), tintColor: #colorLiteral(red: 0.1146069989, green: 0.3011208177, blue: 0.9670061469, alpha: 1))
+        btn.imageEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+        return btn
     }()
     
     var nameTextField:CustomUITextField = {
-        let textField = CustomUITextField()
-        textField.placeholder = "نام خود را وارد کنید..."
-        textField.textAlignment = .right
-        textField.textColor = .black
-        textField.font = UIFont(name: "BTraffic", size: 17)
+        let textField = CustomUITextField(textAlignmnet: .right, placeHolder: "نام خود را وارد کنید...")
         return textField
     }()
     
-     var lastNameTextField:CustomUITextField = {
-        let textField = CustomUITextField()
-        textField.placeholder = "نام خانوادگی خود را وارد کنید..."
-        textField.textAlignment = .right
-        textField.textColor = .black
-        textField.font = UIFont(name: "BTraffic", size: 17)
+    var lastNameTextField:CustomUITextField = {
+        let textField = CustomUITextField(textAlignmnet: .right, placeHolder: "نام خانوادگی خود را وارد کنید...")
         return textField
     }()
     
     var studentIdTextField:CustomUITextField = {
-        let textField = CustomUITextField()
-        textField.placeholder = "شماره دانشجویی خود را وارد کنید..."
-        textField.textAlignment = .right
-        textField.textColor = .black
-        textField.keyboardType = .decimalPad
-        textField.font = UIFont(name: "BTraffic", size: 17)
+        let textField =  CustomUITextField(textAlignmnet: .right, placeHolder: "شماره دانشجویی خود را وارد نمایید...", keyboardType: .decimalPad)
         return textField
-    }()
-    
-    var ticketTextView:CustomTextView = {
-        let textView = CustomTextView()
-        return textView
-    }()
-    
-    var titleLabel:UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont(name: "BTraffic", size: 30)
-        label.textColor = UIColor.darkGray
-        return label
-    }()
-    
-    var confirmButton:UIButton = {
-        let btn = UIButton()
-        btn.setTitle("تایید", for: .normal)
-        btn.setTitleColor(.white, for: .normal)
-        btn.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-        btn.titleLabel?.font = UIFont(name: "BTraffic", size: 23)
-        btn.layer.cornerRadius = 4.0
-        return btn
-    }()
-    
-    var selectAttachmentButton:UIButton = {
-        let btn = UIButton()
-        btn.setImage(#imageLiteral(resourceName: "add-media"), for: .normal)
-        btn.imageView?.tintColor = #colorLiteral(red: 0.1146069989, green: 0.3011208177, blue: 0.9670061469, alpha: 1)
-        btn.imageEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
-        return btn
     }()
     
     //MARK: - Overridden Method
@@ -119,7 +99,6 @@ class DataEntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-       
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -133,33 +112,25 @@ class DataEntryViewController: UIViewController {
         view.backgroundColor = UIColor.white
         setupTableView()
         autoLayoutTitleLabel()
+        autoLayoutForCloseButton()
+        
         if userType != nil{
             titleLabel.text = "لیست تیکت ها"
             autoLayoutForUITableView()
-            
-            let sortQuery = DataQueryBuilder()
-            sortQuery!.setSortBy(["created DESC"])
-            
-            dataStore?.find(sortQuery, response: { (tickets:[Any]?) in
-                let ticket = tickets as! [Dictionary<String,AnyObject>]
-                self.studentTickes = StudentTicket.basicParsingStudentTicket(ticket)
-                self.tableViewItems.reloadData()
-            }, error: { (fault) in
-                print("Fault:\(fault.debugDescription)")
-            })
-        }else{
+            restoreAllTikcets()
+        } else {
             if let cellID = selectedCellID {
                 setupViewBasedOnCellId(cellID: cellID)
             }
-            setupActionForButton()
         }
-        
+        setupActionForButton()
     }//func
     
     //setup actions for buttons in the DataEntryViewController
     private func setupActionForButton() {
         confirmButton.addTarget(self, action: #selector(handelConfirmAction(_:)), for: .touchUpInside)
         selectAttachmentButton.addTarget(self, action: #selector(handleAttachmentButton(_:)), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(handleCloseButton(_:)), for: .touchUpInside)
     }
     
     
@@ -169,24 +140,24 @@ class DataEntryViewController: UIViewController {
             titleLabel.text = "انتخاب استان"
             autoLayoutForUITableView()
             provinceReader = ProvinceReader()
-            provincesList = provinceReader.parseProvinceJSON()
+            stringDictionaryCollection[CollectionNames.provinceList] = provinceReader.parseProvinceJSON()
         }else if cellID == cellIdName.cell2.rawValue {
             titleLabel.text = "انتخاب دانشکده"
             autoLayoutForUITableView()
             collegListReader = CollegeListReader()
             if let prvnc = DataEntryViewController.province {
-                collegeList = collegListReader.parseCollegeListJSON(provinceName: prvnc)
+                stringDictionaryCollection[CollectionNames.collegeList] = collegListReader.parseCollegeListJSON(provinceName: prvnc)
             }
         }else if cellID == cellIdName.cell3.rawValue {
             titleLabel.text = "انتخاب رشته تحصیلی"
             autoLayoutForUITableView()
             courseListReader = CourseListReader()
-            courseList = courseListReader.readCourseListFromFile()
+            stringDictionaryCollection[CollectionNames.courseList] = courseListReader.readCourseListFromFile()
         }else if cellID == cellIdName.cell4.rawValue {
             titleLabel.text = "انتخاب مقطع تحصیلی"
             autoLayoutForUITableView()
             gradListReader = GradeListReader()
-            gradeList = gradListReader.readGradList()
+            stringDictionaryCollection[CollectionNames.gradeList] = gradListReader.readGradList()
         }else if cellID == cellIdName.cell5.rawValue {
             titleLabel.text = "تعیین نام و نام خانوادگی"
             autoLayoutForTextFields()
@@ -197,7 +168,7 @@ class DataEntryViewController: UIViewController {
             titleLabel.text = "انتخاب گیرنده پیام"
             autoLayoutForUITableView()
             receiverListReader = ReceiverListReader()
-            receiverList = receiverListReader.readReceiverList()
+            stringDictionaryCollection[CollectionNames.receiverList] = receiverListReader.readReceiverList()
         }else if cellID == cellIdName.cell8.rawValue {
             titleLabel.text = "متن پیام"
             autoLayoutForTextView()
@@ -205,6 +176,7 @@ class DataEntryViewController: UIViewController {
         
     }//func
     
+    //setting up uitableView
     private func setupTableView(){
         tableViewItems.dataSource = self
         tableViewItems.delegate = self
@@ -213,7 +185,7 @@ class DataEntryViewController: UIViewController {
         tableViewItems.tableFooterView = UIView()
     }//func
     
-    
+    //select an image from gallery
     @objc private func handleAttachmentButton(_ button:UIButton) {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -224,6 +196,7 @@ class DataEntryViewController: UIViewController {
         }
     }
     
+    //handle confirm button action based on which view is seted up
     @objc private func handelConfirmAction(_ btn:UIButton){
         if selectedCellID == cellIdName.cell5.rawValue {
             let name = nameTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
@@ -265,9 +238,38 @@ class DataEntryViewController: UIViewController {
         
     }//func
     
+    //check if student id is correct or not
     private func isStudentID(st_ID:String) -> Bool{
         guard st_ID.count == 14 else {return false}
         return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: st_ID))
+    }
+    
+    //dismiss view controller
+    @objc private func handleCloseButton(_ button:UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    private func restoreAllTikcets(){
+        
+        let activityIndicator = CustomActivityIndicator(title: "بارگذاری...")
+        view.addSubview(activityIndicator)
+         activityIndicator.anchor(top: nil, leading: nil, trailing: nil, bottom: nil, height: 100, width: 140, XAxis: view.centerXAnchor, YAxis: view.centerYAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        activityIndicator.startAnimating()
+        
+        let sortQuery = DataQueryBuilder()
+        sortQuery!.setSortBy(["created DESC"])
+        
+        dataStore?.find(sortQuery, response: { (tickets:[Any]?) in
+            let ticket = tickets as! [Dictionary<String,AnyObject>]
+            self.studentTickes = StudentTicket.basicParsingStudentTicket(ticket)
+            DispatchQueue.main.async {
+                self.tableViewItems.reloadData()
+                activityIndicator.stopAnimating()
+            }
+        }, error: { (fault) in
+            print("Fault:\(fault.debugDescription)")
+        })
     }
     
 }//class
